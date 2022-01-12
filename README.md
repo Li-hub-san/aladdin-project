@@ -1,1 +1,1 @@
-# alladin-project
+# aladdin-project
