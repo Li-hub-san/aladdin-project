@@ -1,29 +1,23 @@
+import java.util.Scanner;
+
 public class Application {
 
   public static void main(String[] args) {
 
+    Scanner sc =new Scanner(System.in);
+    initialMenu();
     MagicLamp firstMagicLamp = new MagicLamp(2);
 
     Genie firstGenie = firstMagicLamp.rub(3);
-    System.out.println(firstGenie);
+//    System.out.println(firstGenie);
 
-    Genie secondGenie = firstMagicLamp.rub(3);
-    System.out.println(secondGenie);
-
-    Genie thirdGenie = firstMagicLamp.rub(3);
-    System.out.println(thirdGenie);
-
-
-    if (thirdGenie instanceof Demon) {
-      firstMagicLamp.recharge((Demon) thirdGenie);
+    if (firstGenie instanceof Demon) {
+      firstMagicLamp.recharge((Demon) firstGenie);
     }
+  }
 
-    firstGenie.grantWish();
-    firstGenie.grantWish();
-
-    thirdGenie.grantWish();
-    System.out.println(firstMagicLamp);
-
+  public static void initialMenu(){
+    System.out.println("Welcome to Aladdin factory!" + "\n" + "Create Magic Lamp(1) | Exit(2)");
   }
 
 }
