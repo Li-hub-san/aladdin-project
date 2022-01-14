@@ -11,23 +11,13 @@ public class Application {
         System.out.println("Welcome to Aladdin factory!" + "\n" + "Create Magic Lamp(1) | Exit(2)");
 
         int firstChoice = sc.nextInt();
-//        int numberOfWishes = sc.nextInt();
 
         initialMenu(firstChoice);
     }
 
     public static void initialMenu(int firstChoice) {
-
         if (firstChoice == 1) {
-            MagicLamp firstMagicLamp = new MagicLamp(generateRandomGenie());
-
-            Genie firstGenie = firstMagicLamp.rub(3);
-            firstGenie.grantWish();
-
-
-            if (firstGenie instanceof Demon) {
-                firstMagicLamp.recharge((Demon) firstGenie);
-            }
+            createLamp();
         } else {
             System.out.println("Ohh no! Hope to see you again.");
             System.exit(0);
@@ -37,6 +27,19 @@ public class Application {
 
     public static int generateRandomGenie() {
         return ran.nextInt(10) + 1;
+    }
+
+    public static void createLamp() {
+        MagicLamp firstMagicLamp = new MagicLamp(generateRandomGenie());
+
+        System.out.println("How many wishes fo you want to grant?");
+        int numberOfWishes = sc.nextInt();
+        Genie firstGenie = firstMagicLamp.rub(numberOfWishes);
+        firstGenie.grantWish();
+
+        if (firstGenie instanceof Demon) {
+            firstMagicLamp.recharge((Demon) firstGenie);
+        }
     }
 
 }
