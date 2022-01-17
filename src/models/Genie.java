@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Scanner;
 
 public abstract class Genie {
@@ -6,7 +8,10 @@ public abstract class Genie {
 
   public Genie(int wishLimit) {
     this.wishLimit = wishLimit;
+    System.out.println("A " + this.getType() + " appears before you!");
   }
+
+  protected abstract String getType();
 
   public int getGrantedWishes() {
     return wishCounter;

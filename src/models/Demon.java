@@ -1,8 +1,15 @@
+package models;
+
 public class Demon extends Genie {
   private boolean fedToMagicLamp = false;
 
   public Demon(int wishLimit) {
     super(Integer.MAX_VALUE);
+  }
+
+  @Override
+  protected String getType() {
+    return "Demon";
   }
 
   public void setFedToMagicLamp(boolean fedToMagicLamp) {
@@ -14,7 +21,7 @@ public class Demon extends Genie {
     if (!fedToMagicLamp) {
       super.grantWish();
     } else {
-      System.out.println("You have used the Demon to recharge the lamp. There are no more wishes left to use.");
+      System.out.println("You have used the models.Demon to recharge the lamp. There are no more wishes left to use.");
     }
   }
 

@@ -1,3 +1,5 @@
+package models;
+
 public class MagicLamp {
   private final int genieLimit;
   private int genieCounter;
@@ -6,6 +8,7 @@ public class MagicLamp {
 
   public MagicLamp(int genieLimit) {
     this.genieLimit = genieLimit;
+    System.out.println("You created a Magic Lamp!");
   }
 
   public int getRechargeCounter() {
@@ -43,11 +46,7 @@ public class MagicLamp {
 
   @Override
   public String toString() {
-    return "MagicLamp{" +
-        "genieLimit=" + genieLimit +
-        ", rechargeCounter=" + rechargeCounter +
-        ", genieCounter=" + genieCounter +
-        ", rubCounter=" + rubCounter +
-        '}';
+    return "This MagicLamp contains a " + genieLimit + " genie limit with " + rechargeCounter +
+        " recharges, " + genieCounter + " released genies, and " + rubCounter + " rubs.";
   }
 }
