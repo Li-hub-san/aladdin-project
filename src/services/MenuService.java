@@ -35,7 +35,13 @@ public class MenuService {
               handleInputException();
             }
           }
-          case 3 -> selectLamp();
+          case 3 -> {
+            if(choice <= lamps.size()){
+              selectLamp(choice);
+            } else{
+              System.out.println("bla");
+            }
+          }
           case 0 -> exitApplication();
           default -> handleInputException();
         }
@@ -45,18 +51,28 @@ public class MenuService {
     }
   }
 
-  public void selectLamp() {
-    System.out.println(lamps.size() + " lamps available.");
+  public void selectLamp(int lampNumber) {
+    System.out.println(lamps);
   }
 
+  /**
+   * Verifies the list size.
+   * @return boolean
+   */
   private boolean hasMagicLamps() {
     return this.lamps.size() > 0;
   }
 
+  /**
+   * Lists all lamps.
+   */
   private void listLamps() {
     this.lamps.forEach(System.out::println);
   }
 
+  /**
+   * Exits console.
+   */
   public void exitApplication() {
     System.out.println("Ohh no! Hope to see you again.");
     System.exit(0);
@@ -64,13 +80,20 @@ public class MenuService {
 
   public void handleInputException() throws InterruptedException {
     System.out.println("Invalid option.");
-    Thread.sleep(1500);
+    Thread.sleep(1000);
   }
 
+  /**
+   * Generates a random number.
+   * @return int random number
+   */
   public int generateRandomGenie() {
     return ran.nextInt(10) + 1;
   }
 
+  /**
+   * creates a new MagicLamp
+   */
   public void createLamp() {
     MagicLamp magicLamp = new MagicLamp(generateRandomGenie());
     this.lamps.add(magicLamp);
