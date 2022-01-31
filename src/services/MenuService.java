@@ -36,8 +36,9 @@ public class MenuService {
             }
           }
           case 3 -> {
-            if(choice <= lamps.size()){
-              selectLamp(choice);
+            if(hasMagicLamps()){
+              lampMenu(choice);
+
             } else{
               System.out.println("bla");
             }
@@ -51,8 +52,12 @@ public class MenuService {
     }
   }
 
+  public void lampMenu(int choice){
+    selectLamp(choice);
+  }
+
   public void selectLamp(int lampNumber) {
-    System.out.println(lamps);
+    System.out.println(lamps.get(lampNumber-1));
   }
 
   /**
