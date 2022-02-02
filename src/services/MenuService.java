@@ -1,5 +1,6 @@
 package services;
 
+import models.Genie;
 import models.MagicLamp;
 
 import java.util.*;
@@ -8,6 +9,7 @@ public class MenuService {
 
   private Random ran = new Random();
   private List<MagicLamp> lamps = new ArrayList<>();
+  private boolean wasListed;
 
   public void showInitialMenu() throws InterruptedException {
     System.out.println("\nWelcome to Aladdin factory!");
@@ -18,6 +20,7 @@ public class MenuService {
       System.out.println("1 - Create Magic Lamp");
       if (hasMagicLamps()) {
         System.out.println("2 - List Magic Lamps");
+        // Só é possivel seleccionar a lampada depois de listar.
         System.out.println("3 - Select Magic Lamp");
       }
       System.out.println("0 - Exit");
@@ -31,30 +34,28 @@ public class MenuService {
           case 2 -> {
             if (hasMagicLamps()) {
               listLamps();
+
             } else {
               handleInputException();
             }
           }
-          case 3 -> {
-            if(hasMagicLamps()){
-              lampMenu(choice);
-
-            } else{
-              System.out.println("bla");
-            }
-          }
+          case 3 -> showLampMenu();
           case 0 -> exitApplication();
-          default -> handleInputException();
-        }
+//          default -> handleInputException();
+          }
+
       } catch (InputMismatchException exception) {
         handleInputException();
       }
     }
   }
 
-  public void lampMenu(int choice){
-    selectLamp(choice);
+  public void showLampMenu(){
+    System.out.println("\n------- LAMP MENU -------");
+    listLamps();
   }
+
+
 
   public void selectLamp(int lampNumber) {
     System.out.println(lamps.get(lampNumber-1));
@@ -72,7 +73,11 @@ public class MenuService {
    * Lists all lamps.
    */
   private void listLamps() {
-    this.lamps.forEach(System.out::println);
+//    this.lamps.forEach(System.out::println);
+    for (int i = 0; i < this.lamps.size(); i++) {
+      System.out.println((i+1) + " - "+ lamps.get(i));
+    }
+    this.wasListed = true;
   }
 
   /**

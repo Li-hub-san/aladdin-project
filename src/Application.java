@@ -3,11 +3,11 @@ import services.MenuService;
 
 public class Application {
 
-  public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
+
     MenuService menu = new MenuService();
     menu.showInitialMenu();
 //
-//    MagicLamp lamp1 = new MagicLamp(5);
 //    lamp1.rub(5); //1 -> 0
 //    lamp1.rub(9); //2 -> 1
 //    lamp1.rub(3); //3 -> 2
@@ -24,6 +24,6 @@ public class Application {
 //        return GrumpyGenie;
 //      }
 //    };
-  }
+    }
 
 }
