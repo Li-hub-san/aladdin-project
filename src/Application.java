@@ -6,7 +6,11 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
 
     MenuService menu = new MenuService();
-    menu.showInitialMenu();
+//    menu.showInitialMenu();
+
+    MagicLamp lamp1 = new MagicLamp(5);
+    menu.showLampMenu(lamp1);
+
 //
 //    lamp1.rub(5); //1 -> 0
 //    lamp1.rub(9); //2 -> 1

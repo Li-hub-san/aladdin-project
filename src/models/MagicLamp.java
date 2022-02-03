@@ -19,6 +19,14 @@ public class MagicLamp {
     return genieLimit - genieCounter;
   }
 
+  public int getGenieCounter() {
+    return genieCounter;
+  }
+
+  public void setGenieCounter(int genieCounter) {
+    this.genieCounter = genieCounter;
+  }
+
   public Genie rub(int expectedWishCount) {
 
     if (getAvailableGenies() < 1) {
