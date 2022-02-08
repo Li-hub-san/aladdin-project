@@ -99,8 +99,8 @@ public class MenuService {
         }
     }
 
-//    private void showGenieMenu(Genie userChoice) {
-//
+    private void showGenieMenu(Genie userChoice) {
+
 //        while (true) {
 //            try {
 //                System.out.println("\n------- GENIE MENU -------");
@@ -137,8 +137,8 @@ public class MenuService {
 //                handleInputException();
 //            }
 //        }
-//
-//    }
+
+    }
 
     public void showLampMenu(MagicLamp lamp) throws InterruptedException {
 
