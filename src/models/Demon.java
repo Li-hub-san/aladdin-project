@@ -1,36 +1,42 @@
 package models;
 
+import java.util.Scanner;
+
 public class Demon extends Genie {
-  private boolean fedToMagicLamp = false;
+    private boolean fedToMagicLamp = false;
 
-  public Demon(int wishLimit) {
-    super(Integer.MAX_VALUE);
-  }
-
-  @Override
-  protected String getType() {
-    return "Demon";
-  }
-
-  public void setFedToMagicLamp(boolean fedToMagicLamp) {
-    this.fedToMagicLamp = fedToMagicLamp;
-  }
-
-  @Override
-  public void grantWish() {
-    if (!fedToMagicLamp) {
-      super.grantWish();
-    } else {
-      System.out.println("You have used the models.Demon to recharge the lamp. There are no more wishes left to use.");
+    public Demon(int wishLimit) {
+        super(wishLimit);
     }
-  }
 
-  @Override
-  public String toString() {
-    return "Demon {" +
-        "wishLimit=unlimited" +
-        ", wishCounter=" + wishCounter +
-        ", fedToMagicLamp=" + fedToMagicLamp +
-        '}';
-  }
+    @Override
+    protected String getType() {
+        return "Demon";
+    }
+
+    public void setFedToMagicLamp(boolean fedToMagicLamp) {
+        this.fedToMagicLamp = fedToMagicLamp;
+    }
+
+    @Override
+    public void grantWish() {
+        if (!fedToMagicLamp) {
+            System.out.println("Make a wish: ");
+
+            Scanner sc = new Scanner(System.in);
+            String wish = sc.nextLine();
+            wishCounter++;
+            System.out.println("** Wish '" + wish + "' granted! **");
+        } else {
+            System.out.println("You have used the Demon to recharge the MagicLamp. There are no more wishes left to grant.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Demon {" +
+                "wishCounter=" + wishCounter +
+                ", fedToMagicLamp=" + fedToMagicLamp +
+                '}';
+    }
 }
