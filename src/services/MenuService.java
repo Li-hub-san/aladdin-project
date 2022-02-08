@@ -99,58 +99,47 @@ public class MenuService {
         }
     }
 
-    private void showGenieMenu(Genie userChoice) {
+    private void showGenieMenu(Genie userChoice) throws InterruptedException {
 
-//        while (true) {
-//            try {
-//                System.out.println("\n------- GENIE MENU -------");
-//                System.out.println("1 - Rub Lamp");
-//                System.out.println("2 - Available Genies");
-//                System.out.println("3 - Released Genies");
-//                System.out.println("4 - List Genies");
-//                System.out.println("5 - Recharge history");
-//                System.out.println("6 - Previous menu");
-//                System.out.println("--------------------------");
-//                Scanner sc = new Scanner(System.in);
-//                int choice = sc.nextInt();
-//                switch (choice) {
-//                    case 1 -> {
-//                        System.out.println("How many wishes do you want this genie to grant? ");
-//                        Scanner scanner = new Scanner(System.in);
-//                        int wishLimit = scanner.nextInt();
-//                        lamp.rub(wishLimit);
-//                    }
-//                    case 2 -> System.out.println("The MagicLamp has " + lamp.getAvailableGenies() + " available genie(s).");
-//                    case 3 -> System.out.println("The MagicLamp has released " + lamp.getGenieCounter() + " genie(s).");
-//                    case 4 -> {
-//                        if (lamp.hasGenies()) {
-//                            listGenies(lamp.getGenies());
-//                        } else {
-//                            handleInputException();
-//                        }
-//                    }
-//                    case 5 -> System.out.println("This MagicLamp has been recharged " + lamp.getRechargeCounter() + " time(s).");
-////                case 6 -> showInitialMenu();
-//                    default -> handleInputException();
-//                }
-//            } catch (InputMismatchException exception) {
-//                handleInputException();
-//            }
-//        }
+        while (true) {
+            try {
+                System.out.println("\n------- GENIE MENU -------");
+                System.out.println("1 - Grant wishes");
+                System.out.println("1 - Available wishes");
+                System.out.println("2 - Granted wishes");
+                System.out.println("0 - Cancel");
+                System.out.println("--------------------------");
+                Scanner sc = new Scanner(System.in);
+                int choice = sc.nextInt();
+                switch (choice) {
+                    case 1 -> {
+                        Scanner scanner = new Scanner(System.in);
+                        int wishLimit = scanner.nextInt();
+                        userChoice.grantWish();
+                    }
+                    case 2 -> System.out.println("This Genie has " + userChoice.getAvailableWishes() + " available wish(es).");
+                    case 3 -> System.out.println("The MagicLamp has released " + userChoice.getGrantedWishes() + " granted wish(es).");
+                    default -> handleInputException();
+                }
+            } catch (InputMismatchException exception) {
+                handleInputException();
+            }
+        }
 
     }
 
     public void showLampMenu(MagicLamp lamp) throws InterruptedException {
-
         while (true) {
             try {
                 System.out.println("\n------- LAMP MENU -------");
                 System.out.println("1 - Rub Lamp");
                 System.out.println("2 - Available Genies");
                 System.out.println("3 - Released Genies");
-                System.out.println("4 - List Genies");
-                System.out.println("5 - Recharge history");
-                System.out.println("6 - Previous menu");
+                System.out.println("4 - Recharge history");
+                if (lamp.hasGenies()) {
+                    System.out.println("5 - List Genies");
+                }
+                System.out.println("0 - Previous menu");
                 System.out.println("--------------------------");
                 Scanner sc = new Scanner(System.in);
                 int choice = sc.nextInt();
@@ -163,15 +152,15 @@ public class MenuService {
                     }
                     case 2 -> System.out.println("The MagicLamp has " + lamp.getAvailableGenies() + " available genie(s).");
                     case 3 -> System.out.println("The MagicLamp has released " + lamp.getGenieCounter() + " genie(s).");
-                    case 4 -> {
+                    case 4 -> System.out.println("This MagicLamp has been recharged " + lamp.getRechargeCounter() + " time(s).");
+                    case 5 -> {
                         if (lamp.hasGenies()) {
                             listGenies(lamp.getGenies());
                         } else {
                             handleInputException();
                         }
                     }
-                    case 5 -> System.out.println("This MagicLamp has been recharged " + lamp.getRechargeCounter() + " time(s).");
-//                case 6 -> showInitialMenu();
+                    case 0 -> showInitialMenu();
                     default -> handleInputException();
                 }
             } catch (InputMismatchException exception) {
