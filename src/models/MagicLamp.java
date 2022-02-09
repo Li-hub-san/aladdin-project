@@ -35,7 +35,6 @@ public class MagicLamp {
 
         if (getAvailableGenies() < 1) {
             rubCounter++;
-            genieCounter++;
             Demon demon = new Demon(expectedWishCount);
             genies.add(demon);
             return demon;
@@ -64,8 +63,8 @@ public class MagicLamp {
 
     @Override
     public String toString() {
-        return "This MagicLamp contains a " + genieLimit + " genie limit with " + rechargeCounter +
-                " recharges, " + genieCounter + " released genies, and " + rubCounter + " rubs.";
+        return "MagicLamp [genie limit: " + genieLimit + ", recharge(s): " + rechargeCounter +
+                ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
     }
 
     public List<Genie> getGenies() {

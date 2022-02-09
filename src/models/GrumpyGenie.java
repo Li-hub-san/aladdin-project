@@ -32,6 +32,6 @@ public class GrumpyGenie extends Genie {
 
     @Override
     public String toString() {
-        return "Grumpy" + super.toString();
+        return getType() + super.toString();
     }
 }

@@ -6,7 +6,7 @@ public class Demon extends Genie {
     private boolean fedToMagicLamp = false;
 
     public Demon(int wishLimit) {
-        super(wishLimit);
+        super(Integer.MAX_VALUE);
     }
 
     @Override
@@ -34,9 +34,6 @@ public class Demon extends Genie {
 
     @Override
     public String toString() {
-        return "Demon {" +
-                "wishCounter=" + wishCounter +
-                ", fedToMagicLamp=" + fedToMagicLamp +
-                '}';
+        return getType() + super.toString();
     }
 }

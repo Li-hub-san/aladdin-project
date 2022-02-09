@@ -28,6 +28,6 @@ public class HappyGenie extends Genie {
 
     @Override
     public String toString() {
-        return "Happy" + super.toString();
+        return getType() + super.toString();
     }
 }

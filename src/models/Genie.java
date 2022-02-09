@@ -23,9 +23,8 @@ public abstract class Genie {
 
     @Override
     public String toString() {
-        return "Genie{" +
-                "wishLimit=" + wishLimit +
-                ", wishCounter=" + wishCounter +
-                '}';
+        return " [wishLimit: " + wishLimit +
+                ", wishCounter: " + wishCounter +
+                ']';
     }
 }
