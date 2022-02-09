@@ -134,6 +134,8 @@ public class MenuService {
                             ((Demon) chosenGenie).setFedToMagicLamp(true);
                             System.out.println("You have recharged this MagicLamp. Mother Nature thanks you!");
                             //Still have to understand how to lamp.recharge(demon);
+                            this.getMagicLamp(lamps.size());
+
 
                         }
                     }
@@ -206,6 +208,10 @@ public class MenuService {
 
     private boolean hasMagicLamps() {
         return this.lamps.size() > 0;
+    }
+
+    private MagicLamp getMagicLamp(int index){
+        return this.lamps.get(index);
     }
 
     private void listLamps() {
