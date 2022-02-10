@@ -1,9 +1,9 @@
 package menus;
 
-import models.Genie;
-import models.MagicLamp;
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
+import models.Genie;
+import models.MagicLamp;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -15,7 +15,7 @@ public class LampMenu {
         boolean keepLooping = true;
         while (keepLooping) {
             try {
-                MenuHelper.printMenuNameAndBorder("lamp menu");
+                MenuHelper.printMenuTopLimit("lamp menu");
                 System.out.println("1 - Rub Lamp");
                 System.out.println("2 - Available Genies");
                 System.out.println("3 - Released Genies");
@@ -25,7 +25,7 @@ public class LampMenu {
                     System.out.println("6 - Select Genie");
                 }
                 System.out.println("0 - Previous menu");
-                MenuHelper.printBottomMenuBorder();
+                MenuHelper.printMenuBottomLimit();
 
                 int choice = MenuHelper.requestOption();
                 switch (choice) {

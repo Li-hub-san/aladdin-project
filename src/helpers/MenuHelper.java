@@ -19,14 +19,14 @@ public class MenuHelper {
         System.out.println("** " + output + " **");
     }
 
-    public static void printMenuNameAndBorder(String menuName) {
+    public static void printMenuTopLimit(String menuName) {
         String separator = repeatChar("~", 12);
         String header = "\n" + separator + " " + menuName.toUpperCase() + " " + separator;
         MenuHelper.lastMenuNameLength = header.length() - 1;
         System.out.println(header);
     }
 
-    public static void printBottomMenuBorder() {
+    public static void printMenuBottomLimit() {
         System.out.println(repeatChar("~", MenuHelper.lastMenuNameLength));
     }
 

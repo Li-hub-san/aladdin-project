@@ -1,8 +1,8 @@
 package menus;
 
-import models.MagicLamp;
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
+import models.MagicLamp;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -31,14 +31,14 @@ public class InitialMenu {
     }
 
     public static void printMenu() {
-        MenuHelper.printMenuNameAndBorder("initial menu");
+        MenuHelper.printMenuTopLimit("initial menu");
         System.out.println("1 - Create Magic Lamp");
         if (hasMagicLamps()) {
             System.out.println("2 - List Magic Lamps");
             System.out.println("3 - Select Magic Lamp");
         }
         System.out.println("0 - Exit");
-        MenuHelper.printBottomMenuBorder();
+        MenuHelper.printMenuBottomLimit();
     }
 
     public static void handleMenuChoice() throws InterruptedException {

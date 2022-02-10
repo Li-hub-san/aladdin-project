@@ -1,10 +1,10 @@
 package menus;
 
+import helpers.ExceptionHelper;
+import helpers.MenuHelper;
 import models.Demon;
 import models.Genie;
 import models.MagicLamp;
-import helpers.ExceptionHelper;
-import helpers.MenuHelper;
 
 import java.util.InputMismatchException;
 
@@ -26,7 +26,7 @@ public class GenieMenu {
     }
 
     public static void printMenu(Genie chosenGenie) {
-        MenuHelper.printMenuNameAndBorder("genie menu");
+        MenuHelper.printMenuTopLimit("genie menu");
         System.out.println("1 - Make a wish");
         System.out.println("2 - Available wishes");
         System.out.println("3 - Granted wishes");
@@ -34,7 +34,7 @@ public class GenieMenu {
             System.out.println("4 - Recharge MagicLamp with Demon");
         }
         System.out.println("0 - Back to Lamp Menu");
-        MenuHelper.printBottomMenuBorder();
+        MenuHelper.printMenuBottomLimit();
     }
 
     public static void handleMenuChoice(Genie chosenGenie, MagicLamp lamp) throws InterruptedException {
