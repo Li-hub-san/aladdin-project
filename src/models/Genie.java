@@ -1,12 +1,14 @@
 package models;
 
+import helpers.MenuHelper;
+
 public abstract class Genie {
     protected int wishLimit;
     protected int wishCounter;
 
     public Genie(int wishLimit) {
         this.wishLimit = wishLimit;
-        System.out.println("A " + this.getType() + " appears before you!");
+        MenuHelper.printOptionResponse("A " + this.getType() + " appears before you!");
     }
 
     protected abstract String getType();

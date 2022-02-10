@@ -1,6 +1,4 @@
-import models.Demon;
-import models.MagicLamp;
-import services.MenuService;
+import menus.InitialMenu;
 
 public class Application {
 
@@ -13,8 +11,7 @@ public class Application {
 //        System.out.println(lamp.getRechargeCounter());
 //        demon.grantWish();
 
-        MenuService menu = new MenuService();
-        menu.showInitialMenu();
+        InitialMenu.show();
     }
 
 }

@@ -1,5 +1,7 @@
 package models;
 
+import helpers.MenuHelper;
+
 import java.util.Scanner;
 
 public class HappyGenie extends Genie {
@@ -15,9 +17,9 @@ public class HappyGenie extends Genie {
             Scanner sc = new Scanner(System.in);
             String wish = sc.nextLine();
             wishCounter++;
-            System.out.println("** Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left **");
+            MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left!");
         } else {
-            System.out.println("No wishes left!");
+            MenuHelper.printOptionResponse("No wishes left!");
         }
     }
 

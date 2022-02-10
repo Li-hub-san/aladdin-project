@@ -1,5 +1,7 @@
 package models;
 
+import helpers.MenuHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class MagicLamp {
 
     public MagicLamp(int genieLimit) {
         this.genieLimit = genieLimit;
-        System.out.println("You created a Magic Lamp!");
+        MenuHelper.printOptionResponse("You created a Magic Lamp!");
     }
 
     public int getRechargeCounter() {
@@ -63,8 +65,7 @@ public class MagicLamp {
 
     @Override
     public String toString() {
-        return "MagicLamp [genie limit: " + genieLimit + ", recharge(s): " + rechargeCounter +
-                ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
+        return "MagicLamp [genie limit: " + genieLimit + ", recharge(s): " + rechargeCounter + ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
     }
 
     public List<Genie> getGenies() {

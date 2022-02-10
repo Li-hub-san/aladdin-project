@@ -1,5 +1,7 @@
 package models;
 
+import helpers.MenuHelper;
+
 import java.util.Scanner;
 
 public class Demon extends Genie {
@@ -26,9 +28,9 @@ public class Demon extends Genie {
             Scanner sc = new Scanner(System.in);
             String wish = sc.nextLine();
             wishCounter++;
-            System.out.println("** Wish '" + wish + "' granted! **");
+            MenuHelper.printOptionResponse("Wish '" + wish + "' granted!");
         } else {
-            System.out.println("You have used the Demon to recharge the MagicLamp. There are no more wishes left to grant.");
+            MenuHelper.printOptionResponse("You have used the Demon to recharge the MagicLamp. There are no more wishes left to grant.");
         }
     }
 
