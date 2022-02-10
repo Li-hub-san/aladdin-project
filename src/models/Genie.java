@@ -8,6 +8,7 @@ public abstract class Genie {
 
     public Genie(int wishLimit) {
         this.wishLimit = wishLimit;
+
         MenuHelper.printOptionResponse("A " + this.getType() + " appears before you!");
     }
 
@@ -17,7 +18,7 @@ public abstract class Genie {
         return wishCounter;
     }
 
-    public int getAvailableWishes() {
+    public double getAvailableWishes() {
         return wishLimit - wishCounter;
     }
 

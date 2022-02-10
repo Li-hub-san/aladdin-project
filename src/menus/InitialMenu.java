@@ -27,18 +27,18 @@ public class InitialMenu {
             }
         }
 
-        System.out.println("Ohh no! Hope to see you again.");
+        System.out.println("Ohh no! Hope to see you again!");
     }
 
     public static void printMenu() {
-        MenuHelper.printMenuTopLimit("initial menu");
+        MenuHelper.printTopLimit("initial menu");
         System.out.println("1 - Create Magic Lamp");
         if (hasMagicLamps()) {
             System.out.println("2 - Select Magic Lamp");
             System.out.println("3 - List Magic Lamps");
         }
         System.out.println("0 - Exit");
-        MenuHelper.printMenuBottomLimit();
+        MenuHelper.printBottomLimit();
     }
 
     public static void handleMenuChoice() throws InterruptedException {
@@ -68,9 +68,9 @@ public class InitialMenu {
     }
 
     private static void listLamps() {
-        MenuHelper.printListTopLimit("magic lamp list");
+        MenuHelper.printTopLimit("magic lamp list","'" );
         InitialMenu.lamps.forEach(System.out::println);
-        MenuHelper.printListBottomLimit();
+        MenuHelper.printBottomLimit("'");
 
     }
 

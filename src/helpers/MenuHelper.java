@@ -19,15 +19,23 @@ public class MenuHelper {
         System.out.println("** " + output + " **");
     }
 
-    public static void printMenuTopLimit(String menuName) {
-        String separator = repeatChar("~", 12);
+    public static void printTopLimit(String menuName) {
+        printTopLimit(menuName, "~");
+    }
+
+    public static void printTopLimit(String menuName, String character) {
+        String separator = repeatChar(character, 19 - menuName.length() / 2);
         String header = "\n" + separator + " " + menuName.toUpperCase() + " " + separator;
         MenuHelper.lastMenuNameLength = header.length() - 1;
         System.out.println(header);
     }
 
-    public static void printMenuBottomLimit() {
-        System.out.println(repeatChar("~", MenuHelper.lastMenuNameLength));
+    public static void printBottomLimit() {
+        printBottomLimit("~");
+    }
+
+    public static void printBottomLimit(String character) {
+        System.out.println(repeatChar(character, MenuHelper.lastMenuNameLength));
     }
 
     private static String repeatChar(String character, int repetitions) {
@@ -36,17 +44,6 @@ public class MenuHelper {
             result += character;
         }
         return result;
-    }
-
-    public static void printListTopLimit(String menuName) {
-        String separator = repeatChar("'", 12);
-        String header = "\n" + separator + " " + menuName.toUpperCase() + " " + separator;
-        MenuHelper.lastMenuNameLength = header.length() - 1;
-        System.out.println(header);
-    }
-
-    public static void printListBottomLimit(){
-        System.out.println(repeatChar("'", MenuHelper.lastMenuNameLength));
     }
 
 }

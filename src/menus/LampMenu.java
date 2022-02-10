@@ -14,17 +14,16 @@ public class LampMenu {
     private static boolean keepLooping = true;
 
     /**
-     * Receives the chosen Lamp and list of lamps.
-     * @param lamp Magic Lamp chosen
-     * @param lamps List of created Magic Lamps
-     * @throws InterruptedException Exception - all the numbers that is not an option of the menu
+     * Receives the chosen MagicLamp, prints the menu and handles the menu choice.
+     * @param lamp MagicLamp chosen
+     * @throws InterruptedException possible throw from Thread.sleep()
      */
-    public static void show(MagicLamp lamp, List<MagicLamp> lamps) throws InterruptedException {
+    public static void show(MagicLamp lamp) throws InterruptedException {
         while (keepLooping) {
             printMenu(lamp);
 
             try {
-                handleMenuChoice(lamp, lamps);
+                handleMenuChoice(lamp);
             } catch (InputMismatchException exception) {
                 ExceptionHelper.handleInputException();
             }
@@ -40,9 +39,9 @@ public class LampMenu {
      * @param genies List of Genies
      */
     private static void listGenies(List<Genie> genies) {
-        MenuHelper.printListTopLimit("genie List");
+        MenuHelper.printTopLimit("genie List", "'");
         genies.forEach(System.out::println);
-        MenuHelper.printListBottomLimit();
+        MenuHelper.printBottomLimit("'");
     }
 
     /**
@@ -50,7 +49,7 @@ public class LampMenu {
      * @param lamp Magic Lamp
      */
     private static void printMenu(MagicLamp lamp) {
-        MenuHelper.printMenuTopLimit("lamp menu");
+        MenuHelper.printTopLimit("lamp menu");
         System.out.println("1 - Rub Lamp");
         System.out.println("2 - Available Genies");
         System.out.println("3 - Released Genies");
@@ -60,10 +59,10 @@ public class LampMenu {
             System.out.println("6 - List Genies");
         }
         System.out.println("0 - Previous menu");
-        MenuHelper.printMenuBottomLimit();
+        MenuHelper.printBottomLimit();
     }
 
-    private static void handleMenuChoice(MagicLamp lamp, List<MagicLamp> lamps) throws InterruptedException {
+    private static void handleMenuChoice(MagicLamp lamp) throws InterruptedException {
         int choice = MenuHelper.requestOption();
 
         switch (choice) {
@@ -73,12 +72,12 @@ public class LampMenu {
                 int wishLimit = scanner.nextInt();
                 lamp.rub(wishLimit);
             }
-            case 2 -> MenuHelper.printOptionResponse("The MagicLamp has " + lamp.getAvailableGenies() + " available genie(s).");
-            case 3 -> MenuHelper.printOptionResponse("The MagicLamp has released " + lamp.getGenieCounter() + " genie(s).");
-            case 4 -> MenuHelper.printOptionResponse("This MagicLamp has been recharged " + lamp.getRechargeCounter() + " time(s).");
+            case 2 -> MenuHelper.printOptionResponse("The MagicLamp " + lamp.getId() + " has " + lamp.getAvailableGenies() + " available genie(s).");
+            case 3 -> MenuHelper.printOptionResponse("The MagicLamp " + lamp.getId() + " has released " + lamp.getGenieCounter() + " genie(s).");
+            case 4 -> MenuHelper.printOptionResponse("This MagicLamp " + lamp.getId() + " has been recharged " + lamp.getRechargeCounter() + " time(s).");
             case 5 -> {
                 if (lamp.hasGenies()) {
-                    SelectGenieMenu.show(lamp, lamps);
+                    SelectGenieMenu.show(lamp);
                 } else {
                     ExceptionHelper.handleInputException();
                 }

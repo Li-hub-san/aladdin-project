@@ -30,11 +30,11 @@ public class GenieMenu {
     }
 
     /**
-     * Receives a genie and prints the menu options to the console.
+     * Receives the chosen Genie and prints its menu options.
      * @param chosenGenie Genie
      */
     private static void printMenu(Genie chosenGenie) {
-        MenuHelper.printMenuTopLimit("genie menu");
+        MenuHelper.printTopLimit("genie menu");
         System.out.println("1 - Make a wish");
         System.out.println("2 - Available wishes");
         System.out.println("3 - Granted wishes");
@@ -42,25 +42,24 @@ public class GenieMenu {
             System.out.println("4 - Recharge MagicLamp with Demon");
         }
         System.out.println("0 - Back to Lamp Menu");
-        MenuHelper.printMenuBottomLimit();
+        MenuHelper.printBottomLimit();
     }
 
     private static void handleMenuChoice(Genie chosenGenie, MagicLamp lamp) throws InterruptedException {
         int option = MenuHelper.requestOption();
         switch (option) {
             case 1 -> chosenGenie.grantWish();
-            case 2 -> System.out.println("This Genie has " + chosenGenie.getAvailableWishes() + " available wish(es).");
-            case 3 -> System.out.println("This Genie has granted " + chosenGenie.getGrantedWishes() + " wish(es).");
+            case 2 -> MenuHelper.printOptionResponse("Available wish(es): " + chosenGenie.getAvailableWishes());
+            case 3 -> MenuHelper.printOptionResponse("Granted wish(es): " + chosenGenie.getGrantedWishes());
             case 4 -> {
                 if (chosenGenie instanceof Demon demon) {
                     lamp.recharge(demon);
-                    System.out.println("You have recharged this MagicLamp. Mother Nature thanks you!");
+                    MenuHelper.printOptionResponse("You have recharged this MagicLamp. Mother Nature thanks you!");
                 }
             }
             case 0 -> keepLooping = false;
             default -> ExceptionHelper.handleInputException();
         }
-
     }
 
 }

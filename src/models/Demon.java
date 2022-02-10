@@ -8,12 +8,17 @@ public class Demon extends Genie {
     private boolean fedToMagicLamp = false;
 
     public Demon(int wishLimit) {
-        super(Integer.MAX_VALUE);
+        super(wishLimit);
     }
 
     @Override
     protected String getType() {
         return "Demon";
+    }
+
+    @Override
+    public double getAvailableWishes() {
+        return Double.POSITIVE_INFINITY;
     }
 
     public void setFedToMagicLamp(boolean fedToMagicLamp) {
@@ -36,6 +41,8 @@ public class Demon extends Genie {
 
     @Override
     public String toString() {
-        return getType() + super.toString();
+        return getType() + " [wishLimit: UNLIMITED" +
+                ", wishCounter: " + wishCounter +
+                ']';
     }
 }
