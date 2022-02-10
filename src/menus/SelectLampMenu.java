@@ -14,13 +14,13 @@ public class SelectLampMenu {
             return;
         }
 
-        System.out.println("\n--- SELECT LAMP MENU ---");
+        MenuHelper.printListTopLimit("select lamp menu");
         for (int i = 0; i < lamps.size(); i++) {
             MagicLamp currentLamp = lamps.get(i);
             System.out.println((i + 1) + " - " + currentLamp);
         }
         System.out.println("0 - Cancel");
-        System.out.println("--------------------------");
+        MenuHelper.printListBottomLimit();
 
         try {
             int option = MenuHelper.requestOption();

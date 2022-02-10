@@ -15,14 +15,13 @@ public class SelectGenieMenu {
             return;
         }
 
-        System.out.println("\n--- SELECT GENIE MENU ---");
+        MenuHelper.printMenuTopLimit("select genie menu");
         for (int i = 0; i < lamp.getGenies().size(); i++) {
             Genie currentGenie = lamp.getGenies().get(i);
             System.out.println((i + 1) + " - " + currentGenie);
         }
         System.out.println("0 - Cancel");
-        System.out.println("---------------------------");
-        System.out.print("Option: ");
+        MenuHelper.printMenuBottomLimit();
 
         try {
             int option = MenuHelper.requestOption();

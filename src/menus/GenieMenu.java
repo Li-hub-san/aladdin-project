@@ -25,6 +25,10 @@ public class GenieMenu {
         }
     }
 
+    /**
+     * Receives a genie and prints the menu options to the console.
+     * @param chosenGenie Genie
+     */
     public static void printMenu(Genie chosenGenie) {
         MenuHelper.printMenuTopLimit("genie menu");
         System.out.println("1 - Make a wish");

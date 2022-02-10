@@ -68,9 +68,10 @@ public class InitialMenu {
     }
 
     private static void listLamps() {
-        System.out.println("----- MagicLamp List -----");
+        MenuHelper.printListTopLimit("magic lamp list");
         InitialMenu.lamps.forEach(System.out::println);
-        System.out.println("--------------------------");
+        MenuHelper.printListBottomLimit();
+
     }
 
     public static int generateRandomGenie() {

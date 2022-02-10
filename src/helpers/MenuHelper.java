@@ -38,4 +38,15 @@ public class MenuHelper {
         return result;
     }
 
+    public static void printListTopLimit(String menuName) {
+        String separator = repeatChar("'", 12);
+        String header = "\n" + separator + " " + menuName.toUpperCase() + " " + separator;
+        MenuHelper.lastMenuNameLength = header.length() - 1;
+        System.out.println(header);
+    }
+
+    public static void printListBottomLimit(){
+        System.out.println(repeatChar("'", MenuHelper.lastMenuNameLength));
+    }
+
 }
