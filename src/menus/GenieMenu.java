@@ -23,13 +23,17 @@ public class GenieMenu {
                 ExceptionHelper.handleInputException();
             }
         }
+
+        // Declared to false in handleMenuChoice();
+        // Needs to be reset, or it never goes into the while again and goes back to the previous menu.
+        keepLooping = true;
     }
 
     /**
      * Receives a genie and prints the menu options to the console.
      * @param chosenGenie Genie
      */
-    public static void printMenu(Genie chosenGenie) {
+    private static void printMenu(Genie chosenGenie) {
         MenuHelper.printMenuTopLimit("genie menu");
         System.out.println("1 - Make a wish");
         System.out.println("2 - Available wishes");
@@ -41,7 +45,7 @@ public class GenieMenu {
         MenuHelper.printMenuBottomLimit();
     }
 
-    public static void handleMenuChoice(Genie chosenGenie, MagicLamp lamp) throws InterruptedException {
+    private static void handleMenuChoice(Genie chosenGenie, MagicLamp lamp) throws InterruptedException {
         int option = MenuHelper.requestOption();
         switch (option) {
             case 1 -> chosenGenie.grantWish();

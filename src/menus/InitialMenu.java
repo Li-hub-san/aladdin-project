@@ -34,8 +34,8 @@ public class InitialMenu {
         MenuHelper.printMenuTopLimit("initial menu");
         System.out.println("1 - Create Magic Lamp");
         if (hasMagicLamps()) {
-            System.out.println("2 - List Magic Lamps");
-            System.out.println("3 - Select Magic Lamp");
+            System.out.println("2 - Select Magic Lamp");
+            System.out.println("3 - List Magic Lamps");
         }
         System.out.println("0 - Exit");
         MenuHelper.printMenuBottomLimit();
@@ -45,14 +45,14 @@ public class InitialMenu {
         int option = MenuHelper.requestOption();
         switch (option) {
             case 1 -> createLamp();
-            case 2 -> {
+            case 2 -> SelectLampMenu.show(InitialMenu.lamps);
+            case 3 -> {
                 if (hasMagicLamps()) {
                     listLamps();
                 } else {
                     ExceptionHelper.handleInputException();
                 }
             }
-            case 3 -> SelectLampMenu.show(InitialMenu.lamps);
             case 0 -> keepLooping = false;
             default -> ExceptionHelper.handleInputException();
         }

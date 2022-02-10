@@ -21,10 +21,11 @@ public class SelectGenieMenu {
             System.out.println((i + 1) + " - " + currentGenie);
         }
         System.out.println("0 - Cancel");
-        MenuHelper.printMenuBottomLimit();
+        MenuHelper.printListBottomLimit();
 
         try {
             int option = MenuHelper.requestOption();
+
             if (option > 0 && option <= lamp.getGenies().size()) {
                 Genie chosenGenie = lamp.getGenies().get(option - 1);
                 GenieMenu.show(chosenGenie, lamp);
