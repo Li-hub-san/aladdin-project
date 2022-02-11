@@ -45,6 +45,11 @@ public class GenieMenu {
         MenuHelper.printBottomLimit();
     }
 
+    /**
+     * @param chosenGenie Genie
+     * @param lamp Ma
+     * @throws InterruptedException
+     */
     private static void handleMenuChoice(Genie chosenGenie, MagicLamp lamp) throws InterruptedException {
         int option = MenuHelper.requestOption();
         switch (option) {
