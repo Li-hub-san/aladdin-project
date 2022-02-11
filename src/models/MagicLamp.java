@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MagicLamp {
+
+    // comentar codigo
     private static int idCounter = 1;
 
     private final int id;

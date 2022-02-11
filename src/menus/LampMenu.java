@@ -54,6 +54,7 @@ public class LampMenu {
         System.out.println("2 - Available Genies");
         System.out.println("3 - Released Genies");
         System.out.println("4 - Recharge history");
+        // system.out.print -> ver historico de desejos -> imprime a lista
         if (lamp.hasGenies()) {
             System.out.println("5 - Select Genie");
             System.out.println("6 - List Genies");

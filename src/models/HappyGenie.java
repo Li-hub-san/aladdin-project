@@ -16,6 +16,7 @@ public class HappyGenie extends Genie {
 
             Scanner sc = new Scanner(System.in);
             String wish = sc.nextLine();
+            // desejos.add(wish);
             wishCounter++;
             MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left!");
         } else {
