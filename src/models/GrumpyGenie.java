@@ -12,7 +12,7 @@ public class GrumpyGenie extends Genie {
         if (!wishHasBeenGranted()) {
             wishes.add(wish);
             wishCounter++;
-            MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left!");
+            MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + MenuHelper.toSingleCase(getAvailableWishes()) + " wish(es) left!");
         } else {
             MenuHelper.printOptionResponse("No wishes left!");
         }

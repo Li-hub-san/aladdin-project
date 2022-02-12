@@ -6,7 +6,6 @@ import models.Demon;
 import models.Genie;
 import models.MagicLamp;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class GenieMenu extends Menu {
@@ -25,8 +24,10 @@ public class GenieMenu extends Menu {
         MenuHelper.printTopLimit(chosenGenie.getType(), ".", "");
         System.out.println("1 - Make a wish");
         System.out.println("2 - Available wishes");
-        System.out.println("3 - Granted wishes");
-        System.out.println("4 - Most popular wishes");
+        System.out.println("3 - Number of granted wishes");
+        if (chosenGenie.getWishes().size() > 0) {
+            System.out.println("4 - Granted wishes");
+        }
         if (chosenGenie instanceof Demon) {
             System.out.println("5 - Recharge MagicLamp with Demon");
         }
@@ -46,14 +47,7 @@ public class GenieMenu extends Menu {
             }
             case 2 -> MenuHelper.printOptionResponse("Available wish(es): " + MenuHelper.toSingleCase(chosenGenie.getAvailableWishes()));
             case 3 -> MenuHelper.printOptionResponse("Granted wish(es): " + chosenGenie.getGrantedWishes());
-            case 4 -> {
-                MenuHelper.printTopLimit("popular wishes", "'");
-                List<String> wishes = chosenGenie.getWishes();
-                for (String wish : wishes) {
-                    System.out.println(wish);
-                }
-                MenuHelper.printBottomLimit("'");
-            }
+            case 4 -> printGrantedWishes();
             case 5 -> {
                 if (chosenGenie instanceof Demon demon) {
                     lamp.recharge(demon);
@@ -65,4 +59,12 @@ public class GenieMenu extends Menu {
             default -> ExceptionHelper.handleInputException();
         }
     }
+
+    private void printGrantedWishes() {
+        MenuHelper.printTopLimit("granted wishes", "'");
+        MenuHelper.printTopLimit(chosenGenie.getType(), ".", "");
+        chosenGenie.getWishes().forEach(System.out::println);
+        MenuHelper.printBottomLimit("'");
+    }
+
 }

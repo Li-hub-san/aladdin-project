@@ -24,7 +24,7 @@ public class MagicLamp {
         this.id = idCounter;
         idCounter++;
 
-        MenuHelper.printOptionResponse("You created a MagicLamp with " + genieLimit + " Genies!");
+        MenuHelper.printOptionResponse("You created a MagicLamp with " + genieLimit + " Genie(s)!");
     }
 
     public int getId() {
