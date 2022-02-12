@@ -2,9 +2,13 @@ package models;
 
 import helpers.MenuHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Genie {
     protected int wishLimit;
     protected int wishCounter;
+    protected List<String> wishes = new ArrayList<>();
 
     public Genie(int wishLimit) {
         this.wishLimit = wishLimit;
@@ -12,7 +16,7 @@ public abstract class Genie {
         MenuHelper.printOptionResponse("A " + this.getType() + " appears before you!");
     }
 
-    protected abstract String getType();
+    public abstract String getType();
 
     public int getGrantedWishes() {
         return wishCounter;
@@ -22,7 +26,11 @@ public abstract class Genie {
         return wishLimit - wishCounter;
     }
 
-    public abstract void grantWish();
+    public abstract void grantWish(String wish);
+
+    public List<String> getWishes() {
+        return wishes;
+    }
 
     @Override
     public String toString() {

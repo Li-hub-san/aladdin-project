@@ -5,32 +5,24 @@ import helpers.MenuHelper;
 import models.MagicLamp;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
 
-public class InitialMenu {
+public class InitialMenu extends Menu {
 
-    private static List<MagicLamp> lamps = new ArrayList<>();
-    private static boolean keepLooping = true;
+    private final List<MagicLamp> lamps = new ArrayList<>();
 
-    public static void show() throws InterruptedException {
+    @Override
+    public void show() throws InterruptedException {
         System.out.println("\nWelcome to Aladdin factory!");
 
-        while (keepLooping) {
-            printMenu();
-
-            try {
-                handleMenuChoice();
-            } catch (InputMismatchException exception) {
-                ExceptionHelper.handleInputException();
-            }
-        }
+        super.show();
 
         System.out.println("Ohh no! Hope to see you again!");
     }
 
-    public static void printMenu() {
+    @Override
+    protected void printMenu() {
         MenuHelper.printTopLimit("initial menu");
         System.out.println("1 - Create Magic Lamp");
         if (hasMagicLamps()) {
@@ -41,14 +33,21 @@ public class InitialMenu {
         MenuHelper.printBottomLimit();
     }
 
-    public static void handleMenuChoice() throws InterruptedException {
+    @Override
+    protected void handleMenuChoice() throws InterruptedException {
         int option = MenuHelper.requestOption();
         switch (option) {
             case 1 -> createLamp();
-            case 2 -> SelectLampMenu.show(InitialMenu.lamps);
+            case 2 -> {
+                if (hasMagicLamps()) {
+                    new SelectLampMenu(this.lamps).show();
+                } else {
+                    ExceptionHelper.handleInputException();
+                }
+            }
             case 3 -> {
                 if (hasMagicLamps()) {
-                    listLamps();
+                    printLamps();
                 } else {
                     ExceptionHelper.handleInputException();
                 }
@@ -58,23 +57,23 @@ public class InitialMenu {
         }
     }
 
-    private static boolean hasMagicLamps() {
-        return InitialMenu.lamps.size() > 0;
+    private boolean hasMagicLamps() {
+        return this.lamps.size() > 0;
     }
 
-    public static void createLamp() {
-        MagicLamp magicLamp = new MagicLamp(generateRandomGenie());
-        InitialMenu.lamps.add(magicLamp);
+    private void createLamp() {
+        MagicLamp magicLamp = new MagicLamp(generateRandomNumber());
+        this.lamps.add(magicLamp);
     }
 
-    private static void listLamps() {
-        MenuHelper.printTopLimit("magic lamp list","'" );
-        InitialMenu.lamps.forEach(System.out::println);
+    private void printLamps() {
+        MenuHelper.printTopLimit("magic lamp list", "'");
+        this.lamps.forEach(System.out::println);
         MenuHelper.printBottomLimit("'");
 
     }
 
-    public static int generateRandomGenie() {
+    private int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt(5) + 1;
     }

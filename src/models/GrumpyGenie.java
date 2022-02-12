@@ -2,20 +2,15 @@ package models;
 
 import helpers.MenuHelper;
 
-import java.util.Scanner;
-
 public class GrumpyGenie extends Genie {
     public GrumpyGenie(int wishLimit) {
         super(1);
     }
 
     @Override
-    public void grantWish() {
+    public void grantWish(String wish) {
         if (!wishHasBeenGranted()) {
-            System.out.println("Make a wish: ");
-
-            Scanner sc = new Scanner(System.in);
-            String wish = sc.nextLine();
+            wishes.add(wish);
             wishCounter++;
             MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left!");
         } else {
@@ -24,7 +19,7 @@ public class GrumpyGenie extends Genie {
     }
 
     @Override
-    protected String getType() {
+    public String getType() {
         return "Grumpy Genie";
     }
 

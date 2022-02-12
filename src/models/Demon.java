@@ -2,8 +2,6 @@ package models;
 
 import helpers.MenuHelper;
 
-import java.util.Scanner;
-
 public class Demon extends Genie {
     private boolean fedToMagicLamp = false;
 
@@ -12,12 +10,15 @@ public class Demon extends Genie {
     }
 
     @Override
-    protected String getType() {
+    public String getType() {
         return "Demon";
     }
 
     @Override
     public double getAvailableWishes() {
+        if (fedToMagicLamp) {
+            return 0;
+        }
         return Double.POSITIVE_INFINITY;
     }
 
@@ -26,12 +27,9 @@ public class Demon extends Genie {
     }
 
     @Override
-    public void grantWish() {
+    public void grantWish(String wish) {
         if (!fedToMagicLamp) {
-            System.out.println("Make a wish: ");
-
-            Scanner sc = new Scanner(System.in);
-            String wish = sc.nextLine();
+            wishes.add(wish);
             wishCounter++;
             MenuHelper.printOptionResponse("Wish '" + wish + "' granted!");
         } else {

@@ -1,5 +1,6 @@
 package helpers;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class MenuHelper {
@@ -24,11 +25,16 @@ public class MenuHelper {
     }
 
     public static void printTopLimit(String menuName, String character) {
+        printTopLimit(menuName, character, "\n");
+    }
+
+    public static void printTopLimit(String menuName, String character, String backspace) {
         String separator = repeatChar(character, 19 - menuName.length() / 2);
-        String header = "\n" + separator + " " + menuName.toUpperCase() + " " + separator;
+        String header = backspace + separator + " " + menuName.toUpperCase() + " " + separator;
         MenuHelper.lastMenuNameLength = header.length() - 1;
         System.out.println(header);
     }
+
 
     public static void printBottomLimit() {
         printBottomLimit("~");
@@ -44,6 +50,11 @@ public class MenuHelper {
             result += character;
         }
         return result;
+    }
+
+    public static String toSingleCase(double number) {
+        DecimalFormat decimalFormat = new DecimalFormat("#");
+        return decimalFormat.format(number);
     }
 
 }

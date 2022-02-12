@@ -7,27 +7,30 @@ import java.util.List;
 
 public class MagicLamp {
 
-    // comentar codigo
     private static int idCounter = 1;
 
     private final int id;
-    private final int genieLimit;
+    private final int originalLimit;
+    private int genieLimit;
     private int genieCounter;
     private int rubCounter;
     private int rechargeCounter;
-    private List<Genie> genies = new ArrayList<>();
+    private final List<Genie> genies = new ArrayList<>();
 
     public MagicLamp(int genieLimit) {
         this.genieLimit = genieLimit;
+        this.originalLimit = genieLimit;
+
         this.id = idCounter;
         idCounter++;
 
-        MenuHelper.printOptionResponse("You created a Magic Lamp!");
+        MenuHelper.printOptionResponse("You created a MagicLamp with " + genieLimit + " Genies!");
     }
 
     public int getId() {
         return id;
     }
+
     public int getRechargeCounter() {
         return rechargeCounter;
     }
@@ -40,17 +43,12 @@ public class MagicLamp {
         return genieCounter;
     }
 
-    public void setGenieCounter(int genieCounter) {
-        this.genieCounter = genieCounter;
-    }
-
-    public Genie rub(int expectedWishCount) {
-
+    public void rub(int expectedWishCount) {
         if (getAvailableGenies() < 1) {
             rubCounter++;
             Demon demon = new Demon(expectedWishCount);
             genies.add(demon);
-            return demon;
+            return;
         }
 
         if (rubCounter % 2 == 0) {
@@ -58,25 +56,30 @@ public class MagicLamp {
             genieCounter++;
             GrumpyGenie grumpyGenie = new GrumpyGenie(expectedWishCount);
             genies.add(grumpyGenie);
-            return grumpyGenie;
+            return;
         }
 
         rubCounter++;
         genieCounter++;
         HappyGenie happyGenie = new HappyGenie(expectedWishCount);
         genies.add(happyGenie);
-        return happyGenie;
     }
 
+    /**
+     * Receives a Demon, feeds it to the MagicLamp and removes it from the Genie list.
+     *
+     * @param demon Demon
+     */
     public void recharge(Demon demon) {
         rechargeCounter++;
-        genieCounter = 0;
+        genieLimit += originalLimit;
         demon.setFedToMagicLamp(true);
+        genies.remove(demon);
     }
 
     @Override
     public String toString() {
-        return "MagicLamp " + id + " [available genies: " + genieLimit + ", recharge(s): " + rechargeCounter + ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
+        return "MagicLamp " + id + " [available genies: " + getAvailableGenies() + ", recharge(s): " + rechargeCounter + ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
     }
 
     public List<Genie> getGenies() {

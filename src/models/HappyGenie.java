@@ -2,21 +2,15 @@ package models;
 
 import helpers.MenuHelper;
 
-import java.util.Scanner;
-
 public class HappyGenie extends Genie {
     public HappyGenie(int wishLimit) {
         super(wishLimit);
     }
 
     @Override
-    public void grantWish() {
+    public void grantWish(String wish) {
         if (this.wishLimit > this.wishCounter) {
-            System.out.println("Make a wish: ");
-
-            Scanner sc = new Scanner(System.in);
-            String wish = sc.nextLine();
-            // desejos.add(wish);
+            wishes.add(wish);
             wishCounter++;
             MenuHelper.printOptionResponse("Wish '" + wish + "' granted, " + getAvailableWishes() + " wish(es) left!");
         } else {
@@ -25,7 +19,7 @@ public class HappyGenie extends Genie {
     }
 
     @Override
-    protected String getType() {
+    public String getType() {
         return "Happy Genie";
     }
 

@@ -1,42 +1,30 @@
 package menus;
 
 import models.MagicLamp;
-import helpers.ExceptionHelper;
-import helpers.MenuHelper;
 
 import java.util.List;
 
-public class SelectLampMenu {
+public class SelectLampMenu extends SelectMenu<MagicLamp> {
 
-    public static void show(List<MagicLamp> lamps) throws InterruptedException {
-        if (lamps.size() == 1) {
-            LampMenu.show(lamps.get(0));
-            return;
-        }
+    private final List<MagicLamp> lamps;
 
-        MenuHelper.printTopLimit("select lamp menu");
-        for (int i = 0; i < lamps.size(); i++) {
-            MagicLamp currentLamp = lamps.get(i);
-            System.out.println((i + 1) + " - " + currentLamp);
-        }
-        System.out.println("0 - Cancel");
-        MenuHelper.printBottomLimit();
+    public SelectLampMenu(List<MagicLamp> lamps) {
+        this.lamps = lamps;
+    }
 
-        try {
-            int option = MenuHelper.requestOption();
+    @Override
+    protected String getMenuName() {
+        return "select lamp";
+    }
 
-            if (option > 0 && option <= lamps.size()) {
-                MagicLamp chosenLamp = lamps.get(option - 1);
-                LampMenu.show(chosenLamp);
-            } else if (option != 0) {
-                ExceptionHelper.handleInputException();
-                show(lamps);
-            }
-        } catch (Exception exception) {
-            ExceptionHelper.handleInputException();
-            show(lamps);
-        }
+    @Override
+    protected List<MagicLamp> getList() {
+        return lamps;
+    }
+
+    @Override
+    protected void openNextMenu(MagicLamp lamp) throws InterruptedException {
+        new LampMenu(lamp).show();
     }
 
 }
-
