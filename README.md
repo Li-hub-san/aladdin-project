@@ -14,7 +14,7 @@ ficheiros/linhas onde as mesmas se encontram implementadas.
 
 > Uma lâmpada mágica liberta génios quando esfregada (método rub).
 
-[x] A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um método [`rub()`](/src/models/MagicLamp.java#L75), cujo
+- [x] A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um método [`rub()`](/src/models/MagicLamp.java#L75), cujo
 retorna uma nova instância de um [`Genie`](/src/models/Genie.java).
 
 > Os génios podem ser bem ou mal-humorados.
