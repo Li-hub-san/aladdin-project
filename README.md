@@ -6,9 +6,13 @@ programação Java oferecido pela Startup Madeira na iniciativa Requalificar + D
 O enunciado do projecto encontra-se abaixo, sub-dividido pelas diferentes funcionalidades requeridas, com links para os
 ficheiros/linhas onde as mesmas se encontram implementadas.
 
+<br>
+
 ## Problema
 
 > Aplicando os conceitos OO que já conhece, concretize as classes necessárias para representar a funcionalidade que se descreve de seguida. Pode ser necessária a criação de classes adicionais não descritas abaixo. A correcta execução dos testes depende da estrita aderência à nomenclatura das classes apresentadas.
+
+<br>
 
 ## Funcionalidade da lâmpada mágica
 
@@ -80,6 +84,8 @@ os [`Genie`](/src/models/Genie.java)s.
 
 :white_check_mark: O método [`rub()`](/src/models/MagicLamp.java#L75) cria apenas um [`Genie`](/src/models/Genie.java) de cada vez.
 
+<br>
+
 ## Funcionalidade do génio bem-humorado
 
 > O génio bem-humorado concede todos os desejos que lhe forem colocados, até ao limite com que foi chamado da lâmpada. Depois do limite já não são concedidos desejos.
@@ -104,6 +110,8 @@ método [`getAvailableWishes()`](/src/models/Genie.java#L56).
 método [`grantWish()`](/src/models/HappyGenie.java#L31) [concede apenas um desejo de cada vez](/src/models/HappyGenie.java#L31)
 .
 
+<br>
+
 ## Funcionalidade do génio mal-humorado
 
 > O génio mal-humorado concede apenas o primeiro desejo que lhe for colocado, independentemente do limite com que foi chamado da lâmpada.
@@ -117,6 +125,8 @@ do [`wishCounter`](/src/models/Genie.java#L21).
 
 :white_check_mark: O [`GrumpyGenie`](/src/models/GrumpyGenie.java) deverá implementar o
 método [`wishHasBeenGranted()`](/src/models/GrumpyGenie.java#L46).
+
+<br>
 
 ## Funcionalidade do demónio reciclável
 
@@ -142,9 +152,13 @@ lâmpada [já não pode realizar mais desejos](/src/models/Demon.java#L52).
 método [`grantWish()`](/src/models/Demon.java#L51) [concede apenas um desejo de cada vez](/src/models/Demon.java#L51)
 .
 
+<br>
+
 ## Diagrama de classes dos modelos
 
 ![Diagrama de classes dos modelos](/src/resources/models.png "Diagrama de classes dos modelos")
+
+<br>
 
 ## Diagrama de classes dos menus
 
