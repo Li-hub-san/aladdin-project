@@ -1,4 +1,4 @@
-# Projecto Alladin
+# Projecto Aladdin
 
 Este projecto foi realizado no âmbito da disciplina **Processos de Desenvolvimento de Software**, leccionada no curso de
 programação Java oferecido pela Startup Madeira na iniciativa Requalificar + Digital.
@@ -18,12 +18,14 @@ ficheiros/linhas onde as mesmas se encontram implementadas.
 
 > Uma lâmpada mágica liberta génios quando esfregada (método rub).
 
-:white_check_mark: A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um método [`rub()`](/src/models/MagicLamp.java#L75), cujo
-retorna uma nova instância de um [`Genie`](/src/models/Genie.java).
+:white_check_mark: A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um
+método [`rub()`](/src/models/MagicLamp.java#L75), cujo retorna uma nova instância de
+um [`Genie`](/src/models/Genie.java).
 
 > Os génios podem ser bem ou mal-humorados.
 
-:white_check_mark: O [`Genie`](/src/models/Genie.java) deverá ter as sub-classes [`HappyGenie`](/src/models/HappyGenie.java)
+:white_check_mark: O [`Genie`](/src/models/Genie.java) deverá ter as
+sub-classes [`HappyGenie`](/src/models/HappyGenie.java)
 e [`GrumpyGenie`](/src/models/GrumpyGenie.java).
 
 > O humor dos génios é determinado pelas condições da lâmpada: sempre que a lâmpada tiver sido esfregada um número par de vezes (sem contar a actual), o génio sai mal-humorado.
@@ -34,7 +36,8 @@ um [`GrumpyGenie`](/src/models/GrumpyGenie.java) [(link para implementação)](/
 
 > A quantidade de génios disponíveis é determinada no momento de encantamento da lâmpada (criação).
 
-:white_check_mark: O [`genieLimit`](/src/models/MagicLamp.java#L14) é definido no [construtor](/src/models/MagicLamp.java#L58)
+:white_check_mark: O [`genieLimit`](/src/models/MagicLamp.java#L14) é definido
+no [construtor](/src/models/MagicLamp.java#L58)
 da [`MagicLamp`](/src/models/MagicLamp.java).
 
 > Depois de esgotados os génios disponíveis, já não adianta esfregar a lâmpada para obter um génio, bem ou mal-humorado: nestas condições, a lâmpada cria um pequeno demónio que responde a pedidos de forma literal mas perversa.
@@ -45,7 +48,8 @@ um [`Demon`](/src/models/Demon.java) [(link para implementação)](/src/models/M
 
 > Devido a requisitos de sustentabilidade ambiental, as normas de produção exigem que as lâmpadas sejam recarregáveis.
 
-:white_check_mark: A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um método [`recharge()`](/src/models/MagicLamp.java#L103).
+:white_check_mark: A [`MagicLamp`](/src/models/MagicLamp.java) deverá ter um
+método [`recharge()`](/src/models/MagicLamp.java#L103).
 
 > Assim, é possível voltar a obter génios quando se esfrega a lâmpada (em número igual ao inicial).
 
@@ -55,7 +59,8 @@ ao [`originalLimit`](/src/models/MagicLamp.java#L26), ao fazer [`rub()`](/src/mo
 
 > O processo de recarregamento exige apenas que um demónio seja alimentado à lâmpada.
 
-:white_check_mark: O método [`recharge()`](/src/models/MagicLamp.java#L103) deverá requerer um [`Demon`](/src/models/Demon.java)
+:white_check_mark: O método [`recharge()`](/src/models/MagicLamp.java#L103) deverá requerer
+um [`Demon`](/src/models/Demon.java)
 e [alimentá-lo](/src/models/MagicLamp.java#L106)
 à [`MagicLamp`](/src/models/MagicLamp.java).
 
@@ -82,7 +87,8 @@ os [`Genie`](/src/models/Genie.java)s.
 
 > Nota: a lâmpada liberta apenas um génio de cada vez.
 
-:white_check_mark: O método [`rub()`](/src/models/MagicLamp.java#L75) cria apenas um [`Genie`](/src/models/Genie.java) de cada vez.
+:white_check_mark: O método [`rub()`](/src/models/MagicLamp.java#L75) cria apenas um [`Genie`](/src/models/Genie.java)
+de cada vez.
 
 <br>
 
@@ -144,7 +150,8 @@ lâmpada [já não pode realizar mais desejos](/src/models/Demon.java#L52).
 
 > É possível saber quantos desejos já foram concedidos.
 
-:white_check_mark: O [`Demon`](/src/models/Demon.java) deverá implementar o método [`getGrantedWishes()`](/src/models/Genie.java#L74).
+:white_check_mark: O [`Demon`](/src/models/Demon.java) deverá implementar o
+método [`getGrantedWishes()`](/src/models/Genie.java#L74).
 
 > Nota: o demónio concede apenas um desejo de cada vez.
 
