@@ -145,3 +145,7 @@ método [`grantWish()`](/src/models/Demon.java#L51) [concede apenas um desejo de
 ## Diagrama de classes dos modelos
 
 ![Diagrama de classes dos modelos](/src/resources/models.png "Diagrama de classes dos modelos")
+
+## Diagrama de classes dos menus
+
+![Diagrama de classes dos menus](/src/resources/menus.png "Diagrama de classes dos menus")
