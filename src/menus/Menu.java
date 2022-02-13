@@ -1,15 +1,20 @@
 package menus;
 
 import helpers.ExceptionHelper;
-
 import java.util.InputMismatchException;
 
+/**
+ * Abstract class that defines the general functionality for a menu.
+ */
 public abstract class Menu {
 
-    protected boolean keepLooping = true;
+    /**
+     * Indicates whether the menu should keep looping.
+     */
+    private boolean keepLooping = true;
 
     /**
-     * Loops the printMenu and handleMenuChoice until keepLooping = false.
+     * Prints menu and handles menu choice in a loop until {@link #exitMenu()} is called.
      *
      * @throws InterruptedException possible throw from Thread.sleep()
      */
@@ -26,12 +31,21 @@ public abstract class Menu {
     }
 
     /**
-     * Prints menu options.
+     * Breaks the menu's {@link #show()} loop.
+     *
+     * @see Menu#show()
+     */
+    protected void exitMenu() {
+        keepLooping = false;
+    }
+
+    /**
+     * Prints the menu's options.
      */
     protected abstract void printMenu();
 
     /**
-     * Requests a menu option and handles it.
+     * Requests a menu option choice and handles it.
      *
      * @throws InterruptedException possible throw from Thread.sleep()
      */

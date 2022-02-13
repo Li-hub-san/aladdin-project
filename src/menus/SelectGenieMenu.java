@@ -1,14 +1,24 @@
 package menus;
 
+import java.util.List;
 import models.Genie;
 import models.MagicLamp;
 
-import java.util.List;
-
+/**
+ * Menu to select a genie from a lamp's genies list.
+ */
 public class SelectGenieMenu extends SelectMenu<Genie> {
 
+    /**
+     * Selected lamp.
+     */
     private final MagicLamp lamp;
 
+    /**
+     * Requires a selected lamp to initialize the {@link SelectGenieMenu}.
+     *
+     * @param lamp selected lamp.
+     */
     public SelectGenieMenu(MagicLamp lamp) {
         this.lamp = lamp;
     }

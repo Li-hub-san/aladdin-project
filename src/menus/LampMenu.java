@@ -8,6 +8,8 @@ import models.MagicLamp;
 import java.text.Normalizer;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Scanner;
 
 public class LampMenu extends Menu {
 
@@ -63,7 +65,7 @@ public class LampMenu extends Menu {
                 }
             }
             case 7 -> printPopularWishes();
-            case 0 -> keepLooping = false;
+            case 0 -> exitMenu();
             default -> ExceptionHelper.handleInputException();
         }
     }

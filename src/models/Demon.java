@@ -9,11 +9,19 @@ public class Demon extends Genie {
         super(wishLimit);
     }
 
+    /**
+     * @return String - Genie subclass
+     */
     @Override
     public String getType() {
         return "Demon";
     }
 
+    /**
+     * Returns the Demon's available wishes. Will always be one of two values: 0 or Infinity.
+     *
+     * @return the Demon's available wishes.
+     */
     @Override
     public double getAvailableWishes() {
         if (fedToMagicLamp) {
@@ -22,10 +30,11 @@ public class Demon extends Genie {
         return Double.POSITIVE_INFINITY;
     }
 
-    public void setFedToMagicLamp(boolean fedToMagicLamp) {
-        this.fedToMagicLamp = fedToMagicLamp;
-    }
-
+    /**
+     * Receives a wish, verifies whether it can be granted and grants it. Prints a response for either case.
+     *
+     * @param wish wish to be granted.
+     */
     @Override
     public void grantWish(String wish) {
         if (!fedToMagicLamp) {
@@ -42,5 +51,13 @@ public class Demon extends Genie {
         return getType() + " [wishLimit: UNLIMITED" +
                 ", wishCounter: " + wishCounter +
                 ']';
+    }
+
+    // --------------------
+    // Getters and Setters |
+    // --------------------
+
+    public void setFedToMagicLamp(boolean fedToMagicLamp) {
+        this.fedToMagicLamp = fedToMagicLamp;
     }
 }

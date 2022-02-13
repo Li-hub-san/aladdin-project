@@ -27,22 +27,11 @@ public class MagicLamp {
         MenuHelper.printOptionResponse("You created a MagicLamp with " + genieLimit + " Genie(s)!");
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public int getRechargeCounter() {
-        return rechargeCounter;
-    }
-
-    public int getAvailableGenies() {
-        return genieLimit - genieCounter;
-    }
-
-    public int getGenieCounter() {
-        return genieCounter;
-    }
-
+    /**
+     * Receives a number of wishes. Based on the rub counter attribute, instances a specific Genie subclass.
+     *
+     * @param expectedWishCount number of wishes that is expected the Genie to grant.
+     */
     public void rub(int expectedWishCount) {
         if (getAvailableGenies() < 1) {
             rubCounter++;
@@ -66,7 +55,7 @@ public class MagicLamp {
     }
 
     /**
-     * Receives a Demon, feeds it to the MagicLamp and removes it from the Genie list.
+     * Receives a Demon, feeds it to the MagicLamp to recharge it. Removes the Demon from the Genie list.
      *
      * @param demon Demon
      */
@@ -77,16 +66,52 @@ public class MagicLamp {
         genies.remove(demon);
     }
 
+    /**
+     * Indicates whether there are any created genies.
+     *
+     * @return true if there are created genies; false otherwise.
+     */
+    public boolean hasGenies() {
+        return genies.size() > 0;
+    }
+
+    /**
+     * Overrides the toSting() java.utils method.
+     *
+     * @return Genie's attributes and its respective values.
+     */
     @Override
     public String toString() {
         return "MagicLamp " + id + " [available genies: " + getAvailableGenies() + ", recharge(s): " + rechargeCounter + ", genie(s) released: " + genieCounter + ", rubs(s): " + rubCounter + "]";
+    }
+
+    /**
+     * Calculates how many genies are available in the MagicLamp based on two class attributes : Created genies and released genies.
+     *
+     * @return Difference between Genies created and Genies released.
+     */
+    public int getAvailableGenies() {
+        return genieLimit - genieCounter;
+    }
+
+    // --------------------
+    // Getters and Setters |
+    // --------------------
+
+    public int getId() {
+        return id;
+    }
+
+    public int getRechargeCounter() {
+        return rechargeCounter;
+    }
+
+    public int getGenieCounter() {
+        return genieCounter;
     }
 
     public List<Genie> getGenies() {
         return genies;
     }
 
-    public boolean hasGenies() {
-        return genies.size() > 0;
-    }
 }
