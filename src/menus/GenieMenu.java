@@ -2,10 +2,11 @@ package menus;
 
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
-import java.util.Scanner;
 import models.Demon;
 import models.Genie;
 import models.MagicLamp;
+
+import java.util.Scanner;
 
 /**
  * Class that handles the genie menu.
@@ -25,7 +26,7 @@ public class GenieMenu extends Menu {
     /**
      * Requires the selected lamp and selected genie to initialize the {@link GenieMenu}.
      *
-     * @param lamp selected lamp.
+     * @param lamp  selected lamp.
      * @param genie selected genie.
      */
     public GenieMenu(MagicLamp lamp, Genie genie) {
@@ -64,14 +65,22 @@ public class GenieMenu extends Menu {
                 genie.grantWish(wish);
             }
             case 2 -> MenuHelper.printOptionResponse(
-                "Available wish(es): " + MenuHelper.toSingleCase(genie.getAvailableWishes()));
+                    "Available wish(es): " + MenuHelper.toSingleCase(genie.getAvailableWishes()));
             case 3 -> MenuHelper.printOptionResponse("Granted wish(es): " + genie.getGrantedWishes());
-            case 4 -> printGrantedWishes();
+            case 4 -> {
+                if (genie.getWishes().size() > 0) {
+                    printGrantedWishes();
+                } else {
+                    ExceptionHelper.handleInputException();
+                }
+            }
             case 5 -> {
                 if (genie instanceof Demon demon) {
                     lamp.recharge(demon);
                     MenuHelper.printOptionResponse("You have recharged this MagicLamp. Mother Nature thanks you!");
                     exitMenu();
+                } else {
+                    ExceptionHelper.handleInputException();
                 }
             }
             case 0 -> exitMenu();

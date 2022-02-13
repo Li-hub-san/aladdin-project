@@ -2,17 +2,12 @@ package menus;
 
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
-import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 import models.Genie;
 import models.MagicLamp;
+
+import java.text.Normalizer;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Class that handles the lamp menu.
@@ -61,14 +56,15 @@ public class LampMenu extends Menu {
                 System.out.println("How many wishes do you want this genie to grant? ");
                 Scanner scanner = new Scanner(System.in);
                 int wishLimit = scanner.nextInt();
-                lamp.rub(wishLimit);
+                if (wishLimit >= 0) {
+                    lamp.rub(wishLimit);
+                } else {
+                    ExceptionHelper.handleInputException();
+                }
             }
-            case 2 -> MenuHelper.printOptionResponse(
-                "MagicLamp " + lamp.getId() + " -> " + lamp.getAvailableGenies() + " available genie(s).");
-            case 3 -> MenuHelper.printOptionResponse(
-                "MagicLamp " + lamp.getId() + " -> released " + lamp.getGenieCounter() + " genie(s).");
-            case 4 -> MenuHelper.printOptionResponse(
-                "MagicLamp " + lamp.getId() + " -> recharged " + lamp.getRechargeCounter() + " time(s).");
+            case 2 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> " + lamp.getAvailableGenies() + " available genie(s).");
+            case 3 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> released " + lamp.getGenieCounter() + " genie(s).");
+            case 4 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> recharged " + lamp.getRechargeCounter() + " time(s).");
             case 5 -> {
                 if (lamp.hasGenies()) {
                     new SelectGenieMenu(lamp).show();
@@ -83,7 +79,13 @@ public class LampMenu extends Menu {
                     ExceptionHelper.handleInputException();
                 }
             }
-            case 7 -> printPopularWishes();
+            case 7 -> {
+                if (lamp.hasGenies()) {
+                    printPopularWishes();
+                } else {
+                    ExceptionHelper.handleInputException();
+                }
+            }
             case 0 -> exitMenu();
             default -> ExceptionHelper.handleInputException();
         }
@@ -187,9 +189,9 @@ public class LampMenu extends Menu {
 
         for (String wish : wishes) {
             String normalizedWish = Normalizer.normalize(wish, Normalizer.Form.NFD)
-                .toLowerCase()
-                .replaceAll("[^a-z0-9€$ ]", "")
-                .trim();
+                    .toLowerCase()
+                    .replaceAll("[^a-z0-9€$ ]", "")
+                    .trim();
             normalizedWishes.add(normalizedWish);
         }
 
@@ -205,17 +207,17 @@ public class LampMenu extends Menu {
      */
     private LinkedHashMap<String, Integer> sortByPopularity(HashMap<String, Integer> wishesMap) {
         return wishesMap
-            .entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByValue((o1, o2) -> o2 - o1))
-            .collect(
-                Collectors.toMap(
-                    Map.Entry::getKey,
-                    Map.Entry::getValue,
-                    (e1, e2) -> e1,
-                    LinkedHashMap::new
-                )
-            );
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue((o1, o2) -> o2 - o1))
+                .collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,
+                                Map.Entry::getValue,
+                                (e1, e2) -> e1,
+                                LinkedHashMap::new
+                        )
+                );
     }
 
 }

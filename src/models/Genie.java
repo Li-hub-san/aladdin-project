@@ -9,8 +9,20 @@ import java.util.List;
  * Abstract class from which all the genies extend from.
  */
 public abstract class Genie {
+
+    /**
+     * Number of wishes that can be granted.
+     */
     protected int wishLimit;
+
+    /**
+     * Number of wishes that have been granted.
+     */
     protected int wishCounter;
+
+    /**
+     * List of requested wishes.
+     */
     protected List<String> wishes = new ArrayList<>();
 
     /**
@@ -46,7 +58,7 @@ public abstract class Genie {
     }
 
     /**
-     * Overrides the toSting() java.utils method.
+     * Overrides the toString() java.util method.
      *
      * @return Genie's attributes and its respective values.
      */

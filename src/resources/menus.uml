@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>menus</OriginalElement>
+  <nodes>
+    <node x="753.75" y="-81.0">menus.Menu</node>
+    <node x="264.00000000000006" y="540.0">menus.SelectLampMenu</node>
+    <node x="1008.75" y="215.0">menus.LampMenu</node>
+    <node x="741.75" y="215.0">menus.GenieMenu</node>
+    <node x="151.75000000000006" y="215.0">menus.SelectMenu</node>
+    <node x="394.75000000000006" y="215.0">menus.InitialMenu</node>
+    <node x="0.0" y="540.0">menus.SelectGenieMenu</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="menus.InitialMenu" target="menus.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-115.5" />
+      <point x="558.25" y="190.0" />
+      <point x="847.8846153846152" y="190.0" />
+      <point x="847.8846153846152" y="137.84615384615387" />
+      <point x="847.9999999999999" y="137.84615384615387" />
+      <point x="-17.250000000000114" y="64.46153846153845" />
+    </edge>
+    <edge source="menus.SelectGenieMenu" target="menus.SelectMenu" relationship="GENERALIZATION">
+      <point x="4.000000000000028" y="-71.49999999999989" />
+      <point x="126.00000000000003" y="500.50000000000006" />
+      <point x="216.0" y="500.50000000000006" />
+      <point x="-47.25000000000006" y="97.0" />
+    </edge>
+    <edge source="menus.GenieMenu" target="menus.Menu" relationship="GENERALIZATION">
+      <point x="12.788461538461434" y="-67.9615384615384" />
+      <point x="878.0384615384614" y="224.923076923077" />
+      <point x="894.9999999999999" y="224.923076923077" />
+      <point x="29.749999999999886" y="83.46153846153845" />
+    </edge>
+    <edge source="menus.LampMenu" target="menus.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-137.5" />
+      <point x="1275.75" y="149.5" />
+      <point x="941.9999999999999" y="149.5" />
+      <point x="76.74999999999989" y="63.46153846153845" />
+    </edge>
+    <edge source="menus.SelectMenu" target="menus.Menu" relationship="GENERALIZATION">
+      <point x="0.0" y="-93.0" />
+      <point x="263.25000000000006" y="149.5" />
+      <point x="797.4999999999999" y="149.5" />
+      <point x="797.4999999999999" y="65.96153846153845" />
+      <point x="-109.25000000000011" y="64.46153846153845" />
+    </edge>
+    <edge source="menus.SelectLampMenu" target="menus.SelectMenu" relationship="GENERALIZATION">
+      <point x="-1.5" y="-70.49999999999989" />
+      <point x="403.00000000000006" y="500.50000000000006" />
+      <point x="299.0" y="500.50000000000006" />
+      <point x="35.74999999999994" y="95.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6999999999999998" showDependencies="false" x="751.5000000000002" y="187.14285714285734" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

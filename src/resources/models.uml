@@ -3,79 +3,66 @@
   <ID>JAVA</ID>
   <OriginalElement>models</OriginalElement>
   <nodes>
-    <node x="-287.18734793187355" y="333.836496350365">models.MagicLamp</node>
-    <node x="62.844202898550776" y="262.0">models.Demon</node>
-    <node x="318.8442028985508" y="284.5">models.GrumpyGenie</node>
-    <node x="0.0" y="0.0">models.Genie</node>
-    <node x="553.8442028985509" y="295.5">models.HappyGenie</node>
+    <node x="-223.99999999999994" y="0.0">models.MagicLamp</node>
+    <node x="355.7391304347826" y="296.0">models.GrumpyGenie</node>
+    <node x="60.739130434782595" y="296.0">models.Demon</node>
+    <node x="365.7391304347826" y="0.0">models.Genie</node>
+    <node x="629.7391304347826" y="296.0">models.HappyGenie</node>
   </nodes>
   <notes />
   <edges>
     <edge source="models.MagicLamp" target="models.Genie" relationship="TO_MANY">
-      <point x="0.0" y="-215.0" />
-      <point x="-194.68734793187355" y="481.0" />
-      <point x="52.344202898550776" y="481.0" />
-      <point x="52.344202898550776" y="241.0" />
-      <point x="99.49999999999999" y="241.0" />
-      <point x="-1.4210854715202004E-14" y="105.0" />
+      <point x="1.4210854715202004E-14" y="-214.5" />
+      <point x="-119.99999999999993" y="65.0" />
+      <point x="202.2391304347826" y="65.0" />
+      <point x="202.2391304347826" y="65.24137931034484" />
+      <point x="-111.62068965517233" y="-61.25862068965516" />
     </edge>
     <edge source="models.Demon" target="models.Genie" relationship="GENERALIZATION">
-      <point x="-2.8421709430404007E-14" y="-94.0" />
-      <point x="180.84420289855075" y="241.0" />
-      <point x="426.34420289855075" y="241.0" />
-      <point x="426.34420289855075" y="231.0" />
-      <point x="165.83333333333334" y="231.0" />
-      <point x="66.33333333333331" y="105.0" />
+      <point x="0.0" y="-93.5" />
+      <point x="194.2391304347826" y="280.5869565217391" />
+      <point x="399.63043478260886" y="280.5869565217391" />
+      <point x="-79.10869565217376" y="129.2061469265368" />
     </edge>
     <edge source="models.MagicLamp" target="models.Demon" relationship="CREATE">
-      <point x="61.66666666666666" y="-215.0" />
-      <point x="-133.0206812652069" y="481.0" />
-      <point x="426.3442028985508" y="481.0" />
-      <point x="426.3442028985508" y="471.0" />
-      <point x="180.84420289855078" y="471.0" />
-      <point x="0.0" y="94.0" />
+      <point x="91.36206896551727" y="215.79310344827593" />
+      <point x="-28.637931034482676" y="513.0" />
+      <point x="194.2391304347826" y="513.0" />
+      <point x="0.0" y="93.5" />
     </edge>
     <edge source="models.GrumpyGenie" target="models.Genie" relationship="GENERALIZATION">
-      <point x="0.0" y="-71.5" />
-      <point x="426.34420289855075" y="231.0" />
-      <point x="165.83333333333334" y="231.0" />
-      <point x="66.33333333333331" y="105.0" />
+      <point x="-5.6843418860808015E-14" y="-60.0" />
+      <point x="478.73913043478257" y="274.0" />
+      <point x="478.7608695652176" y="274.0" />
+      <point x="0.021739130434980325" y="108.33658170914549" />
     </edge>
     <edge source="models.HappyGenie" target="models.Genie" relationship="GENERALIZATION">
-      <point x="0.0" y="-60.5" />
-      <point x="623.3442028985509" y="241.0" />
-      <point x="426.34420289855075" y="241.0" />
-      <point x="426.34420289855075" y="231.0" />
-      <point x="165.83333333333334" y="231.0" />
-      <point x="66.33333333333331" y="105.0" />
+      <point x="0.0" y="-49.0" />
+      <point x="724.7391304347826" y="280.5869565217391" />
+      <point x="557.8913043478262" y="280.5869565217391" />
+      <point x="557.8913043478262" y="218.58133433283362" />
+      <point x="544.8478260869567" y="218.58133433283362" />
+      <point x="66.1086956521741" y="36.16266866566724" />
     </edge>
     <edge source="models.MagicLamp" target="models.Genie" relationship="DEPENDENCY">
-      <point x="-61.66666666666666" y="-215.0" />
-      <point x="-256.3540145985402" y="481.0" />
-      <point x="41.344202898550776" y="481.0" />
-      <point x="41.344202898550776" y="241.0" />
-      <point x="33.16666666666667" y="241.0" />
-      <point x="-66.33333333333333" y="105.0" />
-    </edge>
-    <edge source="models.MagicLamp" target="models.HappyGenie" relationship="CREATE">
-      <point x="61.66666666666666" y="-215.0" />
-      <point x="-133.0206812652069" y="481.0" />
-      <point x="426.3442028985508" y="481.0" />
-      <point x="426.3442028985508" y="471.0" />
-      <point x="623.3442028985509" y="471.0" />
-      <point x="0.0" y="60.5" />
+      <point x="107.36206896551727" y="-71.20689655172413" />
+      <point x="-114.63793103448268" y="16.793103448275872" />
     </edge>
     <edge source="models.MagicLamp" target="models.GrumpyGenie" relationship="CREATE">
-      <point x="61.66666666666666" y="-215.0" />
-      <point x="-133.0206812652069" y="481.0" />
-      <point x="426.3442028985508" y="481.0" />
-      <point x="0.0" y="71.5" />
+      <point x="5.362068965517267" y="215.79310344827593" />
+      <point x="-114.63793103448268" y="554.0" />
+      <point x="478.7391304347826" y="554.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="models.MagicLamp" target="models.HappyGenie" relationship="CREATE">
+      <point x="-90.63793103448273" y="217.79310344827593" />
+      <point x="-210.63793103448268" y="599.0" />
+      <point x="724.7391304347826" y="599.0" />
+      <point x="0.0" y="49.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.7195378151260504" showDependencies="true" x="346.5" y="466.0" />
-  <SelectedNodes>
-    <node>models.MagicLamp</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic" zoom="1.15" showDependencies="true" x="410.5000000000002" y="331.79310344827593" />
+  <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
     <Category>Fields</Category>

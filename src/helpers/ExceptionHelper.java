@@ -11,7 +11,7 @@ public class ExceptionHelper {
      * {@link InterruptedException}.
      */
     public static void handleInputException() {
-        System.out.println("Invalid option.");
+        MenuHelper.printOptionResponse("Invalid option.");
 
         try {
             Thread.sleep(1500);
