@@ -52,7 +52,7 @@ public class MenuHelper {
      * Prints a menu's top limit: composed of a new line, followed by the menu's name centered using a given character
      * as padding.
      *
-     * @param menuName name of the menu being printed.
+     * @param menuName  name of the menu being printed.
      * @param character character used to space menu name.
      */
     public static void printTopLimit(String menuName, String character) {
@@ -63,7 +63,7 @@ public class MenuHelper {
      * Prints a menu's top limit: composed of a given prefix, followed by the menu's name centered using a given
      * character as padding.
      *
-     * @param menuName name of the menu being printed.
+     * @param menuName  name of the menu being printed.
      * @param character character used to space menu name.
      */
     public static void printTopLimit(String menuName, String character, String prefix) {
@@ -92,7 +92,7 @@ public class MenuHelper {
     /**
      * Returns a given character repeated a given number of times.
      *
-     * @param character character to repeat.
+     * @param character   character to repeat.
      * @param repetitions number of times to repeat.
      * @return character repeated as many times as {@code repetitions}.
      */

@@ -2,16 +2,28 @@ package models;
 
 import helpers.MenuHelper;
 
+/**
+ * Class that extends the abstract class Genie.
+ * It is the only type of Genie that can recharge the MagicLamp.
+ */
 public class Demon extends Genie {
+
+    /**
+     * Determinate whether the Demon has been fed to the MagicLamp or not.
+     * When true, the Demon can not grant any more wishes; otherwise false and the Demon is able to keep granting wishes.
+     */
     private boolean fedToMagicLamp = false;
 
+    /**
+     * Requires the number wishes that are expected to be granted.
+     *
+     * @param wishLimit number of wishes that is expected to be granted
+     */
     public Demon(int wishLimit) {
         super(wishLimit);
     }
 
-    /**
-     * @return String - Genie subclass
-     */
+
     @Override
     public String getType() {
         return "Demon";
@@ -33,7 +45,7 @@ public class Demon extends Genie {
     /**
      * Receives a wish, verifies whether it can be granted and grants it. Prints a response for either case.
      *
-     * @param wish wish to be granted.
+     * @param wish wish to be granted
      */
     @Override
     public void grantWish(String wish) {

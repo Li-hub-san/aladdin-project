@@ -5,11 +5,19 @@ import helpers.MenuHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract class from which all the genies extend from.
+ */
 public abstract class Genie {
     protected int wishLimit;
     protected int wishCounter;
     protected List<String> wishes = new ArrayList<>();
 
+    /**
+     * Requires the number wishes that are expected to be granted.
+     *
+     * @param wishLimit number of wishes that are expected to be granted
+     */
     public Genie(int wishLimit) {
         this.wishLimit = wishLimit;
 
@@ -26,7 +34,7 @@ public abstract class Genie {
     /**
      * Grants a wish.
      *
-     * @param wish wish to be granted.
+     * @param wish wish to be granted
      */
     public abstract void grantWish(String wish);
 

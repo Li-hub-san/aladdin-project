@@ -2,14 +2,21 @@ package models;
 
 import helpers.MenuHelper;
 
+/**
+ * Class that extends the abstract class Genie.
+ */
 public class GrumpyGenie extends Genie {
+
+    /**
+     * Requires the number wishes that are expected to be granted.
+     * It is the only type of Genie that overrides the limit to 1.
+     *
+     * @param wishLimit number of wishes that is expected to be granted (disregarded)
+     */
     public GrumpyGenie(int wishLimit) {
         super(1);
     }
 
-    /**
-     * @return String - Genie subclass
-     */
     @Override
     public String getType() {
         return "Grumpy Genie";
@@ -18,7 +25,7 @@ public class GrumpyGenie extends Genie {
     /**
      * Receives a wish, verifies whether it can be granted and grants it. Prints a response for either case.
      *
-     * @param wish wish to be granted.
+     * @param wish wish to be granted
      */
     @Override
     public void grantWish(String wish) {
