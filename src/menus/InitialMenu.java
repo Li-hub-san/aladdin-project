@@ -2,18 +2,23 @@ package menus;
 
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
-import models.MagicLamp;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import models.MagicLamp;
 
+/**
+ * Class that handles the initial menu.
+ */
 public class InitialMenu extends Menu {
 
+    /**
+     * List of created lamps.
+     */
     private final List<MagicLamp> lamps = new ArrayList<>();
 
     @Override
-    public void show() throws InterruptedException {
+    public void show() {
         System.out.println("\nWelcome to Aladdin factory!");
 
         super.show();
@@ -33,9 +38,12 @@ public class InitialMenu extends Menu {
         MenuHelper.printBottomLimit();
     }
 
+    /**
+     * Requests a menu option choice and handles it. Handles invalid choices by calling {@link
+     * ExceptionHelper#handleInputException()}.
+     */
     @Override
-    protected void handleMenuChoice() throws InterruptedException {
-        int option = MenuHelper.requestOption();
+    protected void handleMenuOption(int option) {
         switch (option) {
             case 1 -> createLamp();
             case 2 -> {
@@ -52,28 +60,41 @@ public class InitialMenu extends Menu {
                     ExceptionHelper.handleInputException();
                 }
             }
-            case 0 -> keepLooping = false;
+            case 0 -> exitMenu();
             default -> ExceptionHelper.handleInputException();
         }
     }
 
+    /**
+     * Indicates whether there are any created lamps.
+     */
     private boolean hasMagicLamps() {
         return this.lamps.size() > 0;
     }
 
+    /**
+     * Creates a new lamp with a randomly generated genie limit between 1 and 5.
+     */
     private void createLamp() {
-        MagicLamp magicLamp = new MagicLamp(generateRandomNumber());
+        MagicLamp magicLamp = new MagicLamp(generateRandomNumberBetween1And5());
         this.lamps.add(magicLamp);
     }
 
+    /**
+     * Prints all created lamps.
+     */
     private void printLamps() {
         MenuHelper.printTopLimit("magic lamp list", "'");
         this.lamps.forEach(System.out::println);
         MenuHelper.printBottomLimit("'");
-
     }
 
-    private int generateRandomNumber() {
+    /**
+     * Generates a random number between 1 and 5, both inclusive.
+     *
+     * @return random integer from 1 to 5, both inclusive.
+     */
+    private int generateRandomNumberBetween1And5() {
         Random random = new Random();
         return random.nextInt(5) + 1;
     }

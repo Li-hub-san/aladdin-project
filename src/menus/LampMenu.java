@@ -2,17 +2,33 @@ package menus;
 
 import helpers.ExceptionHelper;
 import helpers.MenuHelper;
+import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 import models.Genie;
 import models.MagicLamp;
 
-import java.text.Normalizer;
-import java.util.*;
-import java.util.stream.Collectors;
-
+/**
+ * Class that handles the lamp menu.
+ */
 public class LampMenu extends Menu {
 
+    /**
+     * Selected lamp.
+     */
     private final MagicLamp lamp;
 
+    /**
+     * Requires the selected lamp to initialize the {@link LampMenu}.
+     *
+     * @param lamp selected lamp.
+     */
     public LampMenu(MagicLamp lamp) {
         this.lamp = lamp;
     }
@@ -34,20 +50,25 @@ public class LampMenu extends Menu {
         MenuHelper.printBottomLimit();
     }
 
+    /**
+     * Requests a menu option choice and handles it. Handles invalid choices by calling {@link
+     * ExceptionHelper#handleInputException()}.
+     */
     @Override
-    protected void handleMenuChoice() throws InterruptedException {
-        int choice = MenuHelper.requestOption();
-
-        switch (choice) {
+    protected void handleMenuOption(int option) {
+        switch (option) {
             case 1 -> {
                 System.out.println("How many wishes do you want this genie to grant? ");
                 Scanner scanner = new Scanner(System.in);
                 int wishLimit = scanner.nextInt();
                 lamp.rub(wishLimit);
             }
-            case 2 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> " + lamp.getAvailableGenies() + " available genie(s).");
-            case 3 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> released " + lamp.getGenieCounter() + " genie(s).");
-            case 4 -> MenuHelper.printOptionResponse("MagicLamp " + lamp.getId() + " -> recharged " + lamp.getRechargeCounter() + " time(s).");
+            case 2 -> MenuHelper.printOptionResponse(
+                "MagicLamp " + lamp.getId() + " -> " + lamp.getAvailableGenies() + " available genie(s).");
+            case 3 -> MenuHelper.printOptionResponse(
+                "MagicLamp " + lamp.getId() + " -> released " + lamp.getGenieCounter() + " genie(s).");
+            case 4 -> MenuHelper.printOptionResponse(
+                "MagicLamp " + lamp.getId() + " -> recharged " + lamp.getRechargeCounter() + " time(s).");
             case 5 -> {
                 if (lamp.hasGenies()) {
                     new SelectGenieMenu(lamp).show();
@@ -57,28 +78,30 @@ public class LampMenu extends Menu {
             }
             case 6 -> {
                 if (lamp.hasGenies()) {
-                    printGenies(lamp.getGenies());
+                    printGenies();
                 } else {
                     ExceptionHelper.handleInputException();
                 }
             }
             case 7 -> printPopularWishes();
-            case 0 -> keepLooping = false;
+            case 0 -> exitMenu();
             default -> ExceptionHelper.handleInputException();
         }
     }
 
     /**
-     * Receives a list of Genies and prints all elements.
-     *
-     * @param genies List of Genies
+     * Prints the selected lamp's list of released genies.
      */
-    private void printGenies(List<Genie> genies) {
+    private void printGenies() {
         MenuHelper.printTopLimit("genie List", "'");
-        genies.forEach(System.out::println);
+        lamp.getGenies().forEach(System.out::println);
         MenuHelper.printBottomLimit("'");
     }
 
+    /**
+     * Gathers all wishes from all genies and prints all which were granted more than once, sorted by repetition
+     * (descending).
+     */
     private void printPopularWishes() {
         MenuHelper.printTopLimit("popular wishes", "'");
         MenuHelper.printTopLimit("magic lamp " + lamp.getId(), ".", "");
@@ -90,8 +113,12 @@ public class LampMenu extends Menu {
         MenuHelper.printBottomLimit("'");
     }
 
+    /**
+     * Sorts received wishes by popularity and prints all which were granted more than once. Prints an informative
+     * message when no wishes were made yet, or no current wishes are repeated more than once.
+     */
     private void printRepeatedWishes(HashMap<String, Integer> cumulativeWishMap) {
-        Map<String, Integer> sortedWishMap = sortByPopularity(cumulativeWishMap);
+        LinkedHashMap<String, Integer> sortedWishMap = sortByPopularity(cumulativeWishMap);
 
         boolean hasPopularWishes = false;
         for (Map.Entry<String, Integer> entry : sortedWishMap.entrySet()) {
@@ -109,6 +136,11 @@ public class LampMenu extends Menu {
         }
     }
 
+    /**
+     * Returns a list containing all wishes from all released genies within the selected lamp.
+     *
+     * @return wish list.
+     */
     private List<String> getAllWishes() {
         List<String> allWishes = new ArrayList<>();
 
@@ -119,6 +151,13 @@ public class LampMenu extends Menu {
         return allWishes;
     }
 
+    /**
+     * Normalizes the received wish list and returns a {@code HashMap} containing the wishes as keys and their frequency
+     * as values.
+     *
+     * @param wishes the list of wishes
+     * @return HashMap containing wishes as keys and their frequency as values.
+     */
     private HashMap<String, Integer> getCumulativeWishMap(List<String> wishes) {
         List<String> normalizedWishes = normalizeWishes(wishes);
 
@@ -136,31 +175,47 @@ public class LampMenu extends Menu {
         return repeatedWishList;
     }
 
+    /**
+     * Returns the formatted list of wishes. Each wish is normalized, lower-cased, devoid of all irrelevant characters
+     * and trimmed.
+     *
+     * @param wishes the list of wishes
+     * @return the list of normalized wishes.
+     */
     private List<String> normalizeWishes(List<String> wishes) {
         List<String> normalizedWishes = new ArrayList<>();
 
         for (String wish : wishes) {
             String normalizedWish = Normalizer.normalize(wish, Normalizer.Form.NFD)
-                    .toLowerCase()
-                    .replaceAll("[^a-z0-9€$ ]", "")
-                    .trim();
+                .toLowerCase()
+                .replaceAll("[^a-z0-9€$ ]", "")
+                .trim();
             normalizedWishes.add(normalizedWish);
         }
 
         return normalizedWishes;
     }
 
-    private Map<String, Integer> sortByPopularity(HashMap<String, Integer> wishesMap) {
+    /**
+     * Returns a {@code LinkedHashMap} containing wishes as keys and their frequency as values, sorted by descending
+     * frequency.
+     *
+     * @param wishesMap HashMap containing wishes as keys and their frequency as values.
+     * @return HashMap sorted by descending frequency.
+     */
+    private LinkedHashMap<String, Integer> sortByPopularity(HashMap<String, Integer> wishesMap) {
         return wishesMap
-                .entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue((o1, o2) -> o2 - o1))
-                .collect(
-                        Collectors.toMap(
-                                Map.Entry::getKey,
-                                Map.Entry::getValue,
-                                (e1, e2) -> e1, LinkedHashMap::new)
-                );
+            .entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByValue((o1, o2) -> o2 - o1))
+            .collect(
+                Collectors.toMap(
+                    Map.Entry::getKey,
+                    Map.Entry::getValue,
+                    (e1, e2) -> e1,
+                    LinkedHashMap::new
+                )
+            );
     }
 
 }

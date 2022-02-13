@@ -7,6 +7,19 @@ public class HappyGenie extends Genie {
         super(wishLimit);
     }
 
+    /**
+     * @return String - Genie subclass
+     */
+    @Override
+    public String getType() {
+        return "Happy Genie";
+    }
+
+    /**
+     * Receives a wish, verifies whether it can be granted and grants it. Prints a response for either case.
+     *
+     * @param wish wish to be granted.
+     */
     @Override
     public void grantWish(String wish) {
         if (this.wishLimit > this.wishCounter) {
@@ -18,13 +31,4 @@ public class HappyGenie extends Genie {
         }
     }
 
-    @Override
-    public String getType() {
-        return "Happy Genie";
-    }
-
-    @Override
-    public String toString() {
-        return getType() + super.toString();
-    }
 }

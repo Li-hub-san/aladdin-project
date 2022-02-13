@@ -7,6 +7,19 @@ public class GrumpyGenie extends Genie {
         super(1);
     }
 
+    /**
+     * @return String - Genie subclass
+     */
+    @Override
+    public String getType() {
+        return "Grumpy Genie";
+    }
+
+    /**
+     * Receives a wish, verifies whether it can be granted and grants it. Prints a response for either case.
+     *
+     * @param wish wish to be granted.
+     */
     @Override
     public void grantWish(String wish) {
         if (!wishHasBeenGranted()) {
@@ -18,17 +31,13 @@ public class GrumpyGenie extends Genie {
         }
     }
 
-    @Override
-    public String getType() {
-        return "Grumpy Genie";
-    }
-
+    /**
+     * Verifies if the wish has been granted.
+     *
+     * @return true if the wish was granted; false otherwise.
+     */
     public boolean wishHasBeenGranted() {
         return wishCounter == 1;
     }
 
-    @Override
-    public String toString() {
-        return getType() + super.toString();
-    }
 }
